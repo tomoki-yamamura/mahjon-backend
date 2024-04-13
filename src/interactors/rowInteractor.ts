@@ -1,7 +1,13 @@
 import { IRowInteractor } from "../interfaces/IRowInteractor";
+import { IRowRepository } from "../interfaces/IRowRepository";
 
 export class RowInteractor implements IRowInteractor {
-  queryRowByDateRange(input: any) {
-    throw new Error("Method not implemented.");
+  private repository: IRowRepository
+  constructor(repository: IRowRepository) {
+    this.repository = repository
+  }
+  
+  async queryRowByDateRange(input: any) {
+    return this.repository.queryRowByDateRange(input)
   }
 }
