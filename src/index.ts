@@ -1,22 +1,12 @@
-import { AppDataSource } from "@typeorm-config";
-import { ExpressConfig } from "@express-config";
-import * as express from "express";
-import { config } from "dotenv";
-import { ILogger } from "@interfaces/common/ILogger";
-import { Logger } from "@helpers/logger";
+import express from "express";
 
-const main = async () => {
-  const typeORM = await AppDataSource.initialize();
-  const app = express();
-  const Express = new ExpressConfig(app);
-  if (typeORM.isInitialized) {
+const PORT = process.env.PORT || 8080;
 
-   const  _logger: ILogger<ExpressConfig> = new Logger<ExpressConfig>();
+const app = express();
+app.use(express.json());
+app.use(router);
 
-  _logger.logInformation("🔗 Connected to database using TypeORM. Starting server... 🚀");
-    await Express.init();
-  }
-};
-
-config({ path: "src/.env", debug: true,encoding:'latin1' });
-main();
+app.listen(PORT, () => {
+  console.log("Listening to: ", PORT);
+  
+})

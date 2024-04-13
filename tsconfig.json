@@ -1,35 +1,12 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
-    "paths": {
-      "@controllers/*": ["interfaces/controllers/*"],
-      "@services/*": ["application/services/*"],
-      "@entities/*": ["domain/entities/*"],
-      "@repositories/*": ["infrastructure/repositories/*"],
-      "@middlewares/*": ["interfaces/middlewares/*"],
-      "@routes/*": ["interfaces/routes/*"],
-      "@interfaces/services/*": ["application/interfaces/services/*"],
-      "@interfaces/repositories/*": ["application/interfaces/repositories/*"],
-      "@helpers/*": ["application/helpers/*"],
-      "@typeorm-config": ["infrastructure/typeorm.config.ts"],
-      "@dtos/*": ["application/dtos/*"],
-      "@express-config": ["config/express.config.ts"],
-      "@error-custom/*": ["error-handling/*"],
-      "@interfaces/common/*": ["application/interfaces/common/*"],
-    },
-    "lib": ["ES2015", "ESNext"],
-    "target": "ESNext",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "outDir": "./build",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "isolatedModules": true,
-    "sourceMap": true,
-    "esModuleInterop": false,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "noImplicitReturns": true,
-    "forceConsistentCasingInFileNames": true
+    "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    "module": "commonjs",                                /* Specify what module code is generated. */
+    "sourceMap": true,                                /* Create source map files for emitted JavaScript files. */
+    "outDir": "./build",                                   /* Specify an output folder for all emitted files. */
+    "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */
+    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
+    "strict": true,                                      /* Enable all strict type-checking options. */
+    "skipLibCheck": true ,                              /* Skip type checking all .d.ts files. */
   }
 }
