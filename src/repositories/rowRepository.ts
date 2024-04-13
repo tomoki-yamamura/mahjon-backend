@@ -2,7 +2,9 @@ import { GoogleSpreadsheet } from "google-spreadsheet";
 import { Row } from "../entities/row";
 import { IRowRepository } from "../interfaces/IRowRepository";
 import { gsDoc } from "../google-sheet-config";
+import { injectable } from "inversify";
 
+@injectable()
 export class RowRepository implements IRowRepository {
   private doc: GoogleSpreadsheet
 

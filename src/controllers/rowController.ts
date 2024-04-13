@@ -1,9 +1,13 @@
 import express, { NextFunction } from 'express'
 import { IRowInteractor } from '../interfaces/IRowInteractor'
 import { gsDoc } from '../google-sheet-config'
+import { inject, injectable } from 'inversify'
+import TYPES from '../registories/inversity.types'
+
+@injectable()
 export class RowController {
   private interactor: IRowInteractor
-  constructor(interactor: IRowInteractor) {
+  constructor(@inject(TYPES.RowInteractor) interactor: IRowInteractor) {
     this.interactor = interactor
   }
   async onQueryRowByDateRange(req: express.Request, res: express.Response, next: NextFunction) {

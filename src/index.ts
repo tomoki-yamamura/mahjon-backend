@@ -1,3 +1,4 @@
+import "reflect-metadata"
 import express, { Application } from "express";
 import cors from "cors";
 import router from "./routes/rowRoutes";
@@ -12,5 +13,4 @@ app.use(router)
 
 app.listen(PORT, () => {
   console.log("Listening to: ", PORT);
-  
 })
