@@ -10,7 +10,18 @@ export class RowInteractor implements IRowInteractor {
     this.repository = repository;
   }
 
-  async queryRowByDateRange(input: any) {
-    return this.repository.queryRowByDateRange(input);
+  async queryRowByDateRange({
+    id,
+    start_date,
+    end_date,
+  }: {
+    id: string;
+    start_date: string;
+    end_date: string;
+  }) {
+    console.log(id, start_date, end_date);
+    
+    const result = this.repository.queryRowByDateRange({id, start_date, end_date});
+    return result
   }
 }
