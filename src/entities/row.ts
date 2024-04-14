@@ -9,6 +9,6 @@ export class Row {
   ) {}
 }
 
-type DynamicKeys = {
+export type DynamicKeys = {
   [key in Users]: string;
 };
