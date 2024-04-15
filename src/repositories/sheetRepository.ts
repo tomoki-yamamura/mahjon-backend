@@ -28,6 +28,8 @@ export class SheetRepository implements ISheetRepository {
     return rows
       .filter((row) => {
         const obj = row.toObject();
+        console.log(startDate, endDate);
+        
         return obj.Date >= startDate && obj.Date <= endDate;
       })
       .map((row) => {
