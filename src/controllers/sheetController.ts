@@ -13,8 +13,8 @@ export class SheetController {
   async onQuerySheetByDateRange(req: express.Request, res: express.Response, next: NextFunction) {
     try {
       const { id } = req.params;
-      const { starDate, endDate } = req.query;
-      const data = await this.interactor.querySheetByDateRange({id, starDate, endDate})
+      const { startDate, endDate } = req.query;
+      const data = await this.interactor.querySheetByDateRange({id, startDate, endDate})
       return res.status(200).json(data)
     } catch (error) {
       next(error)

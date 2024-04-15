@@ -3,6 +3,7 @@ import { ISheetRepository } from "../interfaces/ISheetRepository";
 import { gsDoc } from "../google-sheet-config";
 import { injectable } from "inversify";
 import { Sheet } from "../entities/sheet";
+import { Row } from "../entities/row";
 
 @injectable()
 export class SheetRepository implements ISheetRepository {
@@ -20,12 +21,12 @@ export class SheetRepository implements ISheetRepository {
     id: string;
     startDate: string;
     endDate: string;
-  }): Promise<Sheet[]> {
+  }): Promise<Sheet> {
     await this.doc.loadInfo();
     const sheet = this.doc.sheetsByIndex[Number(id)];
     const rows = await sheet.getRows();
     // if you have domain logic, you should use it first.
-    return rows
+    const rowEntity = rows
       .filter((row) => {
         const obj = row.toObject();
         console.log(startDate, endDate);
@@ -34,7 +35,8 @@ export class SheetRepository implements ISheetRepository {
       })
       .map((row) => {
         const obj = row.toObject();
-        return new Sheet(id, obj)
+        return new Row(obj)
       });
+      return new Sheet(id, rowEntity)
   }
 }
