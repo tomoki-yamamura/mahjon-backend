@@ -1,7 +1,7 @@
 const TYPES = {
-  RowRepository: Symbol.for('RowRepository'),
-  RowInteractor: Symbol.for('RowInteractor'),
-  RowController: Symbol.for('RowController')
+  SheetRepository: Symbol.for('SheetRepository'),
+  SheetInteractor: Symbol.for('SheetInteractor'),
+  SheetController: Symbol.for('SheetController')
 } as const;
 
 export default TYPES;
