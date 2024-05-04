@@ -14,5 +14,5 @@ const serviceAccountAuth = new JWT({
 });
 
 export const gsDoc = (): GoogleSpreadsheet => {
-  return new GoogleSpreadsheet(sheetID, serviceAccountAuth)
-}
+  return new GoogleSpreadsheet(sheetID, serviceAccountAuth);
+};

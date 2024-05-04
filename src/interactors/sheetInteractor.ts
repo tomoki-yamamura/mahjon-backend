@@ -1,7 +1,7 @@
 import { inject, injectable } from "inversify";
-import { ISheetInteractor } from "../interfaces/ISheetInteractor";
-import { ISheetRepository } from "../interfaces/ISheetRepository";
-import TYPES from "../registories/inversity.types";
+import { ISheetInteractor } from "../interface/ISheetInteractor";
+import { ISheetRepository } from "../domain/repository/ISheetRepository";
+import TYPES from "../config/inversity.types";
 
 @injectable()
 export class SheetInteractor implements ISheetInteractor {
