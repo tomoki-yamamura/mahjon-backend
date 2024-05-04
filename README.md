@@ -7,7 +7,7 @@ npm run dev
 ## endpoint
 
 ```
-GET /sheets/{SheetID}?startDate={YYYY/MM/DD}&endDate={YYYY/MM/DD}
+GET /sheets/{SheetID}?startDate={YYYY-MM-DD}&endDate={YYYY-MM-DD}
 ```
 SheetID = 0   三人用麻雀のgoogle spread sheetを指定
 SheetID = 1   三人用麻雀のgoogle spread sheetを指定
