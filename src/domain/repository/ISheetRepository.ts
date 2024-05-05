@@ -1,5 +1,11 @@
 import { Sheet } from "../entities/sheet";
 
+type params = {
+  id: string;
+  startDate: string;
+  endDate: string;
+}
+
 export interface ISheetRepository {
-  querySheetByDateRange(input: any): Promise<Sheet>;
+  querySheetByDateRange(input: params): Promise<Sheet>;
 }

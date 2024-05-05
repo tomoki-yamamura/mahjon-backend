@@ -1,4 +1,5 @@
 {
+  "exclude": ["./coverage", "./build", "src/__tests__", "jest.config.js"],
   "compilerOptions": {
     "target": "es2016",
     "module": "commonjs",
@@ -8,6 +9,10 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"]
+    }
   }
 }

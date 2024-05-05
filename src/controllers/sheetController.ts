@@ -16,7 +16,7 @@ export class SheetController {
   ) {
     try {
       const { id } = req.params;
-      const { startDate, endDate } = req.query;
+      const { startDate, endDate } = req.query as { startDate: string, endDate: string };
       const data = await this.interactor.querySheetByDateRange({
         id,
         startDate,
