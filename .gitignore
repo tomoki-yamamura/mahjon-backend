@@ -2,3 +2,5 @@ node_modules
 build
 mahjong-auth.json
 .env
+coverage
+jest.config.js

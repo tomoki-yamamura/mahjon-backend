@@ -4,4 +4,3 @@ export class Sheet {
     public readonly rows: Partial<Record<string, any>>
   ) {}
 }
-
