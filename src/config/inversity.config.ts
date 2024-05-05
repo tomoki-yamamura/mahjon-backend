@@ -1,4 +1,5 @@
 import TYPES from "./inversity.types";
+import "reflect-metadata";
 import { Container } from "inversify";
 import { ISheetInteractor } from "../interface/ISheetInteractor";
 import { ISheetRepository } from "../domain/repository/ISheetRepository";
