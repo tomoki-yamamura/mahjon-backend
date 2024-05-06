@@ -3,4 +3,3 @@ build
 mahjong-auth.json
 .env
 coverage
-jest.config.js
