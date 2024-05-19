@@ -1,6 +1,5 @@
 import { GoogleSpreadsheet } from "google-spreadsheet";
 import { ISheetRepository } from "../domain/repository/ISheetRepository";
-// import { gsDoc } from "./googleSheet/google-sheet-config";
 import { inject, injectable } from "inversify";
 import { Sheet } from "../domain/entities/sheet";
 import { Row } from "../domain/entities/row";
