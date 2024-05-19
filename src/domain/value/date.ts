@@ -12,10 +12,6 @@ class PlayedDate {
     return this.date.toISOString() === otherDate.getDate().toISOString();
   };
 
-  isGrater(otherDate: PlayedDate): boolean {
-    return otherDate.getDate() <= this.date
-  }
-
   isAfter(otherDate: PlayedDate): boolean {
     return otherDate.getDate() <= this.date
   }

@@ -5,8 +5,8 @@ import Hanchan from "./hanchan";
 class HanchanList {
   private hanchans: Hanchan[]
 
-  constructor() {
-    this.hanchans = []
+  constructor(hanchans: Hanchan[]) {
+    this.hanchans = hanchans
   }
 
   getHanchans(): Hanchan[] {
@@ -27,3 +27,5 @@ class HanchanList {
     this.hanchans = filterd
   }
 }
+
+export default HanchanList;

@@ -16,4 +16,13 @@ describe('PlayedDate', () => {
     const differentDateInstance = new PlayedDate(new Date());
     expect(dateInstance.isEqualTo(differentDateInstance)).toBe(false);
   });
+
+  test('isAfter should return true for a different date', () => {
+    const differentDateInstance = new PlayedDate(new Date());
+    expect(differentDateInstance.isAfter(dateInstance)).toBe(true);
+  });
+  test('isBefore should return true for a different date', () => {
+    const differentDateInstance = new PlayedDate(new Date());
+    expect(dateInstance.isBefore(differentDateInstance)).toBe(true);
+  });
 });
