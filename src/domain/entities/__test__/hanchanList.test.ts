@@ -6,15 +6,15 @@ import Hanchan from "../hanchan";
 import HanchanList from "../hanchanList";
 import PlayMode from "../../value/mode";
 import { testHanchan3player, testHanchan4player } from "./fixture/hanchan";
+import { fixDate, oneBeforeDate, oneSecLaterDate } from "../../value/__tests__/fixture/date";
 
 describe('HanchanList', () => {
 
-  const date = new PlayedDate(new Date());
   const player = new Player("1", "tester")
   const point = new Point(0)
   const mode = new PlayMode("3player")
   const scores = [new Score("1", player, point)]
-  const testData = new Hanchan("3", date, mode, scores);
+  const testData = new Hanchan("3", fixDate, mode, scores);
 
   const hanchanList = new HanchanList([testHanchan3player, testHanchan4player]);
   
@@ -26,37 +26,26 @@ describe('HanchanList', () => {
 });
 
 describe('HanchanList', () => {
-  const now = new Date()
-  const nowDate = new PlayedDate(now)
-  const dateOneSecondLater = new PlayedDate(new Date(now.getTime() + 1000));
 
   const hanchanList = new HanchanList([testHanchan3player, testHanchan4player]);
   test('filterHanchanByDate should return filterd hanchans array', () => {
-    hanchanList.filterHanchanByDate(nowDate, dateOneSecondLater)
+    hanchanList.filterHanchanByDate(fixDate, oneSecLaterDate)
     expect(hanchanList.getHanchans().length).toEqual(2)
   });
 });
 
 describe('HanchanList', () => {
-  const now = new Date()
-  const nowDate = new PlayedDate(now)
-  const dateOneSecondBefore = new PlayedDate(new Date(now.getTime() - 1000));
-
   const hanchanList = new HanchanList([testHanchan3player, testHanchan4player]);
   test('filterHanchanByDate should return filterd hanchans array', () => {
-    hanchanList.filterHanchanByDate(dateOneSecondBefore, nowDate)
+    hanchanList.filterHanchanByDate(oneBeforeDate, fixDate)
     expect(hanchanList.getHanchans().length).toEqual(2)
   });
 });
 
 describe('HanchanList', () => {
-  const now = new Date()
-  const dateOneSecondBefore = new PlayedDate(new Date(now.getTime() - 1000));
-  const dateTwoSecondBefore = new PlayedDate(new Date(now.getTime() - 2000));
-
   const hanchanList = new HanchanList([testHanchan3player, testHanchan4player]);
   test('filterHanchanByDate should return filterd hanchans array', () => {
-    hanchanList.filterHanchanByDate(dateTwoSecondBefore, dateOneSecondBefore)
+    hanchanList.filterHanchanByDate(oneSecLaterDate, oneSecLaterDate)
     expect(hanchanList.getHanchans().length).toEqual(0)
   });
 });
