@@ -4,6 +4,9 @@ const TYPES = {
   gsDoc: Symbol.for("gsDoc"),
   SheetController: Symbol.for("SheetController"),
   HealthController: Symbol.for("HealthController"),
+
+  // DB
+  
 };
 
 export default TYPES;
