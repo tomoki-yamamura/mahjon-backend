@@ -9,6 +9,7 @@ import { SheetRepository } from "../repository/sheetRepository";
 import { HealthController } from "../controllers/healthController";
 import { GoogleSpreadsheet } from "google-spreadsheet";
 import { sheetID, serviceAccountAuth } from "../repository/googleSheet/google-sheet-config";
+import { IHanchanRepository } from "../domain/repository/IHanchanRepository";
 
 const container = new Container();
 
@@ -21,3 +22,5 @@ container.bind<GoogleSpreadsheet>(TYPES.gsDoc).toDynamicValue(() => {
 
 container.bind(TYPES.HealthController).to(HealthController);
 export default container;
+
+container.bind<IHanchanRepository>(TYPES.HanchanModel).to()

@@ -6,7 +6,7 @@ const TYPES = {
   HealthController: Symbol.for("HealthController"),
 
   // DB
-  
+  HanchanModel: Symbol.for("HanchanModel")
 };
 
 export default TYPES;
