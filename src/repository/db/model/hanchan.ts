@@ -1,9 +1,11 @@
-import mongoose, { Model, Schema } from "mongoose";
+import mongoose, { Model, Schema, Types } from "mongoose";
 import { Score } from "./score";
+import { injectable } from "inversify";
 
 type mode = "3player" | "4player";
 
 export interface Hanchan {
+  _id: Types.ObjectId;
   date: Date;
   mode: mode;
   scores: Score[];

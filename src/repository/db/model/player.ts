@@ -1,16 +1,18 @@
-import mongoose, { Model, Schema } from "mongoose";
-export interface Player  {
+import { injectable } from "inversify";
+import mongoose, { Document, Model, Schema, Types } from "mongoose";
+export interface IPlayer extends Document  {
+  _id: Types.ObjectId;
   name: string;
 }
 
-const playerSchema = new Schema<Player>({
+const playerSchema = new Schema<IPlayer>({
   name: {
     type: "String",
     required: true,
   },
 });
 
-export const PlayerModel: Model<Player> = mongoose.model<Player>(
+export const PlayerModel: Model<IPlayer> = mongoose.model<IPlayer>(
   "Player",
   playerSchema
 );
