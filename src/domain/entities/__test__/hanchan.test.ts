@@ -1,11 +1,7 @@
-import PlayedDate from "../../value/date";
 import Score from "../score";
 import Point from "../../value/point";
 import Player from "../player";
-import Hanchan from "../hanchan";
-import PlayMode from "../../value/mode";
 import { testHanchan3player } from "./fixture/hanchan";
-import { fixDate } from "../../value/__tests__/fixture/date";
 describe('Hanchan', () => {
 
   const testData = testHanchan3player;
