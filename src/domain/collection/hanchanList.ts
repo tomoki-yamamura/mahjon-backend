@@ -1,6 +1,6 @@
 import PlayedDate from "../value/date";
 import PlayMode from "../value/mode";
-import Hanchan from "./hanchan";
+import Hanchan from "../entities/hanchan";
 
 class HanchanList {
   private hanchans: Hanchan[]
@@ -10,11 +10,13 @@ class HanchanList {
   }
 
   getHanchans(): Hanchan[] {
-    return this.hanchans
+    return [...this.hanchans]
   }
 
-  addHanchan(hanchan: Hanchan): void {
-    this.hanchans.push(hanchan);
+  addHanchan(hanchan: Hanchan): HanchanList {
+    const copy = [...this.hanchans];
+    copy.push(hanchan)
+    return new HanchanList(copy)
   }
 
   filterHanchanByMode(mode: PlayMode)  {

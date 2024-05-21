@@ -1,4 +1,4 @@
-import HanchanList from "../entities/hanchanList";
+import HanchanList from "../collection/hanchanList";
 import Player from "../entities/player";
 
 export interface IPlayerRepository {

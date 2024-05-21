@@ -1,10 +1,10 @@
-import Score from "../score";
+import Score from "../../entities/score";
 import Point from "../../value/point";
-import Player from "../player";
-import Hanchan from "../hanchan";
+import Player from "../../entities/player";
+import Hanchan from "../../entities/hanchan";
 import HanchanList from "../hanchanList";
 import PlayMode from "../../value/mode";
-import { testHanchan3player, testHanchan4player } from "./fixture/hanchan";
+import { testHanchan3player, testHanchan4player } from "../../entities/__test__/fixture/hanchan";
 import { fixDate, oneBeforeDate, oneSecLaterDate } from "../../value/__tests__/fixture/date";
 
 describe('HanchanList', () => {
@@ -19,8 +19,8 @@ describe('HanchanList', () => {
   
   test('addHanchan should add a score to the hanchans array', () => {
     expect(hanchanList.getHanchans().length).toEqual(2)
-    hanchanList.addHanchan(testData);
-    expect(hanchanList.getHanchans().length).toEqual(3)
+    const addedHanchnaList = hanchanList.addHanchan(testData);
+    expect(addedHanchnaList.getHanchans().length).toEqual(3)
   });
 });
 

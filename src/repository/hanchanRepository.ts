@@ -5,7 +5,7 @@ import PlayedDate from "../domain/value/date";
 import PlayMode from "../domain/value/mode";
 import {  Hanchan }  from "./db/model/hanchan";
 import { Model } from "mongoose";
-import HanchanList from "../domain/entities/hanchanList";
+import HanchanList from "../domain/collection/hanchanList";
 
 @injectable()
 export class HanchanRepository implements IHanchanRepository {

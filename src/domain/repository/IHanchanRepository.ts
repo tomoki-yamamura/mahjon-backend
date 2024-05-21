@@ -1,4 +1,4 @@
-import HanchanList from "../entities/hanchanList";
+import HanchanList from "../collection/hanchanList";
 import PlayedDate from "../value/date";
 import PlayMode from "../value/mode";
 
