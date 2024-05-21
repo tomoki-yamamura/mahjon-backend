@@ -1,17 +1,16 @@
 import mongoose, { Model, Schema, Types } from "mongoose";
 import { Score } from "./score";
-import { injectable } from "inversify";
 
 type mode = "3player" | "4player";
 
-export interface Hanchan {
+export interface IHanchan {
   _id: Types.ObjectId;
   date: Date;
   mode: mode;
   scores: Score[];
 }
 
-const hanchanSchema = new Schema<Hanchan>({
+const hanchanSchema = new Schema<IHanchan>({
   date: {
     type: Date,
     required: true,
@@ -29,7 +28,7 @@ const hanchanSchema = new Schema<Hanchan>({
   ],
 });
 
-export const HanchanModel: Model<Hanchan> = mongoose.model(
+export const HanchanModel: Model<IHanchan> = mongoose.model(
   "Hanchan",
   hanchanSchema
 );

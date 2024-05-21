@@ -7,6 +7,6 @@ type params = {
   endDate: Date;
 };
 
-export interface IHanchanInteractor {
+export interface ILineInteractor {
   getHanchansByDate(input: params): Promise<PlayerTotalPointDTO[]>;
 }
