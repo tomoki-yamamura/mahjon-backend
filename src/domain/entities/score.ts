@@ -1,11 +1,12 @@
+import PlayedDate from "../value/date";
 import Point from "../value/point";
 import Player from "./player";
 
 class Score {
-  readonly player: Player;
+  readonly date: PlayedDate;
   readonly point: Point;
-  constructor(player: Player, point: Point) {
-    this.player = player
+  constructor(date: PlayedDate, point: Point) {
+    this.date = date
     this.point = point
   }
 }
