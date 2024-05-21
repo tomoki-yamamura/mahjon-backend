@@ -1,11 +1,13 @@
-import { Sheet } from "../entities/sheet";
+import ScoreList from "../collection/scoreList";
+import PlayedDate from "../value/date";
+import PlayMode from "../value/mode";
 
-type params = {
-  id: string;
-  startDate: string;
-  endDate: string;
+export type getScoresByDateParamsAndMode = {
+  mode: PlayMode
+  startDate: PlayedDate;
+  endDate: PlayedDate;
 }
 
-export interface ISheetRepository {
-  querySheetByDateRange(input: params): Promise<Sheet>;
+export interface IScoreRepository {
+  getScoresByDateAndMode(input: getScoresByDateParamsAndMode): Promise<ScoreList>;
 }

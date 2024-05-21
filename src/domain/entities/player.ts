@@ -13,7 +13,7 @@ class Player {
   }
 
   totalScores(): Point {
-    return this.scores.reduce((acc, cur) => acc.add(cur.point), new Point(0));
+    return this.scores.totalScorePoint()
   }
 }
 
