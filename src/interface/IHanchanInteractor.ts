@@ -1,4 +1,4 @@
-import Hanchan from "../domain/entities/hanchan";
+import HanchanList from "../domain/collection/hanchanList";
 
 type params = {
   startDate: Date;
@@ -6,5 +6,5 @@ type params = {
 };
 
 export interface IHanchanInteractor {
-  getHanchansByDate(input: params): Promise<Hanchan>;
+  getHanchansByDate(input: params): Promise<HanchanList>;
 }

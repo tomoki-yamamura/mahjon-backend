@@ -19,14 +19,14 @@ class HanchanList {
     return new HanchanList(copy)
   }
 
-  filterHanchanByMode(mode: PlayMode)  {
+  filterHanchanByMode(mode: PlayMode): HanchanList {
     const filterd = this.hanchans.filter((hanchan: Hanchan) => hanchan.mode.isEqualTo(mode))
-    this.hanchans = filterd
+    return new HanchanList(filterd)
   }
 
-  filterHanchanByDate(startDate: PlayedDate, endDate: PlayedDate)  {
+  filterHanchanByDate(startDate: PlayedDate, endDate: PlayedDate): HanchanList  {
     const filterd = this.hanchans.filter((hanchan: Hanchan) => hanchan.Date.isAfter(startDate) && hanchan.Date.isBefore(endDate))
-    this.hanchans = filterd
+    return new HanchanList(filterd)
   }
 }
 

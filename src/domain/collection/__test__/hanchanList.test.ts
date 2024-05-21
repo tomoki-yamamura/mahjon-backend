@@ -25,7 +25,6 @@ describe('HanchanList', () => {
 });
 
 describe('HanchanList', () => {
-
   const hanchanList = new HanchanList([testHanchan3player, testHanchan4player]);
   test('filterHanchanByDate should return filterd hanchans array', () => {
     hanchanList.filterHanchanByDate(fixDate, oneSecLaterDate)
@@ -36,16 +35,16 @@ describe('HanchanList', () => {
 describe('HanchanList', () => {
   const hanchanList = new HanchanList([testHanchan3player, testHanchan4player]);
   test('filterHanchanByDate should return filterd hanchans array', () => {
-    hanchanList.filterHanchanByDate(oneBeforeDate, fixDate)
-    expect(hanchanList.getHanchans().length).toEqual(2)
+    const filtered = hanchanList.filterHanchanByDate(oneBeforeDate, fixDate)
+    expect(filtered.getHanchans()).toEqual([testHanchan3player, testHanchan4player])
   });
 });
 
 describe('HanchanList', () => {
   const hanchanList = new HanchanList([testHanchan3player, testHanchan4player]);
   test('filterHanchanByDate should return filterd hanchans array', () => {
-    hanchanList.filterHanchanByDate(oneSecLaterDate, oneSecLaterDate)
-    expect(hanchanList.getHanchans().length).toEqual(0)
+    const filtered = hanchanList.filterHanchanByDate(oneSecLaterDate, oneSecLaterDate)
+    expect(filtered.getHanchans()).toEqual([])
   });
 });
 
@@ -55,7 +54,7 @@ describe('HanchanList', () => {
 
   const hanchanList = new HanchanList([testHanchan3player, testHanchan4player]);
   test('filterHanchanByMode should return filterd hanchans array', () => {
-    hanchanList.filterHanchanByMode(mode)
-    expect(hanchanList.getHanchans()).toEqual([testHanchan3player])
+    const filtered = hanchanList.filterHanchanByMode(mode)
+    expect(filtered.getHanchans()).toEqual([testHanchan3player])
   });
 });

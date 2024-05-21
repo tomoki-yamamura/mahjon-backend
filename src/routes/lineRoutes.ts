@@ -5,8 +5,8 @@ import container from "../config/inversity.config";
 
 const router = express.Router();
 
-const controller = container.get<SheetController>(TYPES.SheetController);
+const controller = container.get<HanchanController>(TYPES.HanchanController);
 
-router.get("/callback", controller.onQuerySheetByDateRange.bind(controller));
+router.get("/callback", controller.getHanchansByDate.bind(controller));
 
 export default router;
