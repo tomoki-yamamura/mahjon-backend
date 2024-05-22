@@ -18,14 +18,14 @@ export class LineController {
   ) {
     try {
       const mode = "3players"
-      let startDate  = new Date()
-      const endDate = new Date('2024/04/01')
+      let startDate  = new Date('2024/04/27')
+      const endDate = new Date()
       const input = {
         mode,
         startDate,
         endDate
       }
-      const data = await this.interactor.getScoresByDate(input);
+      const data = await this.interactor.getScoresByDateAndMode(input);
       return res.status(200).json(data);
     } catch (error) {
       next(error);

@@ -4,6 +4,8 @@ import { PlayerTotalPointDTO } from "./dto/playerTotalPoint";
 import { ILineInteractor } from "../interface/ILineInteractor";
 import { IScoreRepository } from "../domain/repository/IScoreRepository";
 import { IPlayerRepository } from "../domain/repository/IPlayerRepository";
+import PlayMode from "../domain/value/mode";
+import PlayedDate from "../domain/value/date";
 
 @injectable()
 export class LineInteractor implements ILineInteractor {
@@ -11,8 +13,22 @@ export class LineInteractor implements ILineInteractor {
   constructor(@inject(TYPES.PlayerRepository) repository: IPlayerRepository) {
     this.repository = repository;
   }
-  async getScoresByDate(input: { mode: string; startDate: Date; endDate: Date; }): Promise<PlayerTotalPointDTO[]> {
+  async getScoresByDateAndMode({ mode, startDate, endDate }: {
+    mode: string,
+    startDate: Date,
+    endDate: Date,
+  }): Promise<PlayerTotalPointDTO[]> {
+    const modeValue = new PlayMode(mode)
+    const startDateValue = new PlayedDate(startDate)
+    const endDateValue = new PlayedDate(endDate)
     const players = await this.repository.getAllPlayers()
-    return players.map((player) => new PlayerTotalPointDTO(player))
+    const filteredPlayersScore = players.map((player) => {
+      return player.filterScoresByDate(startDateValue, endDateValue)
+    })
+    const filteredPlayersByMode = filteredPlayersScore.map((player) => {
+      return player.filterScoresByMode(modeValue)
+    })
+    
+    return filteredPlayersByMode.map((player) => new PlayerTotalPointDTO(player))
   }
 }

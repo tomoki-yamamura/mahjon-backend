@@ -24,7 +24,7 @@ describe('ScoreList', () => {
   test('should filter scores by date range', () => {
     const oldScore = new Score(oneBeforeDate, point1, mode3players)
     const newScoreList = scoreList.add(oldScore);
-    const filteredScores = newScoreList.filterScores(fixDate, fixDate)
+    const filteredScores = newScoreList.filterScoresByDate(fixDate, fixDate)
     expect(filteredScores.getScores().length).toBe(1);
     expect(filteredScores.getScores()).toContain(score)
     expect(filteredScores).not.toContain(oldScore);
@@ -33,7 +33,7 @@ describe('ScoreList', () => {
   test('should filter scores by date range', () => {
     const newScore = new Score(oneSecLaterDate, point1, mode3players)
     const newScoreList = scoreList.add(newScore);
-    const filteredScores = newScoreList.filterScores(oneSecLaterDate, oneSecLaterDate)
+    const filteredScores = newScoreList.filterScoresByDate(oneSecLaterDate, oneSecLaterDate)
     expect(filteredScores.getScores().length).toBe(1);
     expect(filteredScores.getScores()).toContain(newScore)
     expect(filteredScores).not.toContain(score);

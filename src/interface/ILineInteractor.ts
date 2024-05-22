@@ -7,5 +7,5 @@ type params = {
 };
 
 export interface ILineInteractor {
-  getScoresByDate(input: params): Promise<PlayerTotalPointDTO[]>;
+  getScoresByDateAndMode(input: params): Promise<PlayerTotalPointDTO[]>;
 }
