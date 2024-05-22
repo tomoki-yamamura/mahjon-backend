@@ -12,25 +12,25 @@ import {
   sheetID,
   serviceAccountAuth,
 } from "../repository/googleSheet/google-sheet-config";
-import { IHanchanRepository } from "../domain/repository/IHanchanRepository";
-import { HanchanModel, IHanchan } from "../repository/db/model/hanchan";
 import { Model } from "mongoose";
 import { IPlayerRepository } from "../domain/repository/IPlayerRepository";
 import { IPlayer, PlayerModel } from "../repository/db/model/player";
-import { PlayerRepository } from "../repository/playerRepository";
+// import { PlayerRepository } from "../repository/playerRepository";
 import { IPlayerInteractor } from "../interface/IPlayerInteractor";
 import { PlayerInteractor } from "../interactors/playerInteractor";
-import { PlayerController } from "../controllers/playerController";
-import { HanchanRepository } from "../repository/hanchanRepository";
 import { LineInteractor } from "../interactors/lineInteractor";
 import { ILineInteractor } from "../interface/ILineInteractor";
+// import { ScoreRepository } from "../repository/scoreRepository";
+import { IScore, ScoreModel } from "../repository/db/model/score";
+import { IScoreRepository } from "../domain/repository/IScoreRepository";
+import { PlayerRepository } from "../repository/playerRepository";
 import { LineController } from "../controllers/lineController";
 
 const container = new Container();
 
 container.bind<ISheetRepository>(TYPES.SheetRepository).to(SheetRepository);
 container.bind<IPlayerRepository>(TYPES.PlayerRepository).to(PlayerRepository);
-container.bind<IHanchanRepository>(TYPES.HanchanRepository).to(HanchanRepository);
+// container.bind<IScoreRepository>(TYPES.ScoreRepository).to(ScoreRepository);
 container.bind<ISheetInteractor>(TYPES.SheetInteractor).to(SheetInteractor);
 container.bind<IPlayerInteractor>(TYPES.PlayerInteractor).to(PlayerInteractor);
 container.bind<ILineInteractor>(TYPES.LineInteractor).to(LineInteractor);
@@ -43,10 +43,10 @@ container
   .inSingletonScope();
 
 container.bind(TYPES.HealthController).to(HealthController);
-container.bind(TYPES.PlayerController).to(PlayerController);
+// container.bind(TYPES.PlayerController).to(PlayerController);
 container.bind(TYPES.LineController).to(LineController);
 
 container.bind<Model<IPlayer>>(TYPES.PlayerModel).toConstantValue(PlayerModel)
-container.bind<Model<IHanchan>>(TYPES.HanchanModel).toConstantValue(HanchanModel)
+container.bind<Model<IScore>>(TYPES.ScoreModel).toConstantValue(ScoreModel)
 export default container;
 

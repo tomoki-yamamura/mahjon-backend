@@ -1,4 +1,4 @@
-import Score from "../../entities/score";
+import Score from "../../value/score";
 import ScoreList from "../scoreList";
 import { point1, point2 } from "../../value/__tests__/fixture/point";
 import { fixDate, oneSecLaterDate, oneBeforeDate } from "../../value/__tests__/fixture/date";

@@ -1,4 +1,4 @@
-import Score from "../entities/score";
+import Score from "../value/score";
 import PlayedDate from "../value/date";
 import Point from "../value/point";
 

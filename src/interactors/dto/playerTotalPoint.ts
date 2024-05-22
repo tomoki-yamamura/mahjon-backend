@@ -1,10 +1,11 @@
-import Score from "../../domain/entities/score";
+import Player from "../../domain/entities/player";
+import Score from "../../domain/value/score";
 
 export class PlayerTotalPointDTO {
   readonly name: string;
-  readonly point: number;
-  constructor (score: Score) {
-    this.name = score.player.name;
-    this.point = score.point.getPoint();
+  readonly totalPoint: number;
+  constructor (player: Player) {
+    this.name = player.name;
+    this.totalPoint = player.totalScores().getPoint();
   }
 }

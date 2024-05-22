@@ -1,7 +1,7 @@
-import PlayedDate from "../value/date";
-import PlayMode from "../value/mode";
-import Point from "../value/point";
-import Player from "./player";
+import PlayedDate from "./date";
+import PlayMode from "./mode";
+import Point from "./point";
+import Player from "../entities/player";
 
 class Score {
   readonly date: PlayedDate;

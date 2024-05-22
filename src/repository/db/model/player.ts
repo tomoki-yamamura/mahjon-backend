@@ -1,6 +1,5 @@
-import mongoose, { Document, Model, Schema, Types } from "mongoose";
-export interface IPlayer extends Document  {
-  _id: Types.ObjectId;
+import mongoose, { Model, Schema } from "mongoose";
+export interface IPlayer extends Document {
   name: string;
 }
 

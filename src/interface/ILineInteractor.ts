@@ -1,4 +1,3 @@
-import HanchanList from "../domain/collection/hanchanList";
 import { PlayerTotalPointDTO } from "../interactors/dto/playerTotalPoint";
 
 type params = {
@@ -8,5 +7,5 @@ type params = {
 };
 
 export interface ILineInteractor {
-  getHanchansByDate(input: params): Promise<PlayerTotalPointDTO[]>;
+  getScoresByDate(input: params): Promise<PlayerTotalPointDTO[]>;
 }

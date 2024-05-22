@@ -11,13 +11,21 @@ export class LineController {
   constructor(@inject(TYPES.LineInteractor) interactor: ILineInteractor) {
     this.interactor = interactor;
   }
-  async getHanchansByDate(
+  async getPlayerScoresByDate(
     req: express.Request,
     res: express.Response,
     next: NextFunction
   ) {
     try {
-      const data = await this.interactor.getHanchansByDate();
+      const mode = "3players"
+      let startDate  = new Date()
+      const endDate = new Date('2024/04/01')
+      const input = {
+        mode,
+        startDate,
+        endDate
+      }
+      const data = await this.interactor.getScoresByDate(input);
       return res.status(200).json(data);
     } catch (error) {
       next(error);

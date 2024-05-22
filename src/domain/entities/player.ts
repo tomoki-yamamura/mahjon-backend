@@ -1,6 +1,6 @@
 import ScoreList from "../collection/scoreList";
 import Point from "../value/point";
-import Score from "./score";
+import Score from "../value/score";
 
 class Player {
   readonly Id: string;

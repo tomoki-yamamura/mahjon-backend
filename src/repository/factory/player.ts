@@ -1,6 +1,33 @@
+import Player from "../../domain/entities/player";
 import { IPlayer } from "../db/model/player";
-import PlayerEntity from "../../domain/entities/player";
+import { IScore } from "../db/model/score";
+import Score from "../../domain/value/score";
+import Point from "../../domain/value/point";
+import PlayedDate from "../../domain/value/date";
+import PlayMode from "../../domain/value/mode";
+import ScoreList from "../../domain/collection/scoreList";
 
-export function convertToPlayerArray(playerModels: IPlayer[]): PlayerEntity[] {
-  return playerModels.map(playerModel => new PlayerEntity(playerModel._id.toString(), playerModel.name));
+export function reconstructPlayers(scoreModels: IScore[]): Player[] {
+  const playerMap: { [key: string]: { name: string, scores: Score[] } } = {};
+
+  scoreModels.forEach((scoreModel) => {
+    const playerId = scoreModel.playerId.toString();
+    const playerName = (scoreModel.playerId as IPlayer).name;
+    const point = new Point(scoreModel.point);
+    const date = new PlayedDate(scoreModel.date);
+    const mode = new PlayMode(scoreModel.mode);
+    const score = new Score(date, point, mode);
+
+    if (!playerMap[playerId]) {
+      playerMap[playerId] = { name: playerName, scores: [] };
+    }
+
+    playerMap[playerId].scores.push(score);
+  });
+
+  return Object.keys(playerMap).map((playerId) => {
+    const { name, scores } = playerMap[playerId];
+    const scoreList = new ScoreList(scores);
+    return new Player(playerId, name, scoreList);
+  });
 }
