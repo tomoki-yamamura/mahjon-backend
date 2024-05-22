@@ -1,10 +1,12 @@
-import Hanchan from "../domain/entities/hanchan";
+// import HanchanList from "../domain/collection/hanchanList";
+// import { PlayerTotalPointDTO } from "../interactors/dto/playerTotalPoint";
 
-type params = {
-  startDate: Date;
-  endDate: Date;
-};
+// type params = {
+//   mode: string
+//   startDate: Date;
+//   endDate: Date;
+// };
 
-export interface IHanchanInteractor {
-  getHanchansByDate(input: params): Promise<Hanchan>;
-}
+// export interface IHanchanInteractor {
+//   getHanchansByDate(input: params): Promise<PlayerTotalPointDTO[]>;
+// }

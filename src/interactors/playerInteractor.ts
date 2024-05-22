@@ -2,7 +2,7 @@ import { inject, injectable } from "inversify";
 import TYPES from "../config/inversity.types";
 import { IPlayerInteractor } from "../interface/IPlayerInteractor";
 import PlayerDTO from "./dto/player";
-import { IPlayerRepository } from "../domain/repository/IPlayerRepository";
+import { IPlayerRepository } from "../domain/interface/repository/IPlayerRepository";
 
 @injectable()
 export class PlayerInteractor implements IPlayerInteractor {

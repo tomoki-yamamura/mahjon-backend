@@ -1,9 +1,34 @@
+import ScoreList from "../collection/scoreList";
+import PlayedDate from "../value/date";
+import PlayMode from "../value/mode";
+import Point from "../value/point";
+
 class Player {
   readonly Id: string;
   readonly name: string;
-  constructor(id: string, name: string) {
+  readonly scores: ScoreList;
+  constructor(id: string, name: string, scores: ScoreList) {
     this.Id = id
     this.name = name
+    this.scores = scores
+  }
+
+  // getScores(): number[] {
+  //   return this.scores.getScores()
+  // }
+  
+  totalScores(): Point {
+    return this.scores.totalScorePoint()
+  }
+
+  filterScoresByDate(startDate: PlayedDate, endDate: PlayedDate): Player {
+    const filteredScoreList = this.scores.filterScoresByDate(startDate, endDate)
+    return new Player(this.Id, this.name, filteredScoreList)
+  }
+
+  filterScoresByMode(mode: PlayMode): Player {
+    const filteredScoreList = this.scores.filterScoresByMode(mode)
+    return new Player(this.Id, this.name, filteredScoreList)
   }
 }
 
