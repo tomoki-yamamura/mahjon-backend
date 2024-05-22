@@ -10,20 +10,21 @@ export class LineMessageSender implements IMessageSender {
   constructor(
     @inject(TYPES.LineClient) client: messagingApi.MessagingApiClient
   ) {
-    this.lineClient = client
+    this.lineClient = client;
   }
   async replyMessage(replyToken: string, players: Player[]): Promise<void> {
-    const messages = players.map(player => ({
-      type: 'text',
-      text: `${player.name}さん: ${player.totalScores().getPoint()}`
-    }));
+    const messages = players
+      .map((player) => `${player.name}さん: ${player.totalScores().getPoint()}`)
+      .reduce((acc, cur) => acc + cur + "\n", "");
 
     await this.lineClient.replyMessage({
       replyToken: replyToken,
-      messages: [{
-        type: 'text',
-        text: messages.join('\n')
-      }]
+      messages: [
+        {
+          type: "text",
+          text: messages,
+        },
+      ],
     });
   }
 }
