@@ -1,9 +1,9 @@
 import { GoogleSpreadsheet } from "google-spreadsheet";
-import { ISheetRepository } from "../domain/repository/ISheetRepository";
+import { ISheetRepository } from "../../domain/interface/repository/ISheetRepository";
 import { inject, injectable } from "inversify";
-import { Sheet } from "../domain/entities/sheet";
-import { Row } from "../domain/entities/row";
-import TYPES from "../config/inversity.types";
+import { Sheet } from "../../domain/entities/sheet";
+import { Row } from "../../domain/entities/row";
+import TYPES from "../../config/inversity.types";
 
 @injectable()
 export class SheetRepository implements ISheetRepository {

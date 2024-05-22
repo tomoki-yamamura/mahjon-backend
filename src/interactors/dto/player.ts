@@ -1,12 +1,22 @@
-import PlayerEntity from "../../domain/entities/player";
+import Player from "../../domain/entities/player";
+import ScoreDTO from "./score";
 
-class PlayerDTO {
-  readonly id: string;
+export default class PlayerDTO {
+  readonly Id: string;
   readonly name: string;
-  constructor(player: PlayerEntity) {
-    this.id = player.Id
-    this.name = player.name
-  } 
+  readonly scores: ScoreDTO[];
+  constructor(player: Player) {
+    this.Id = player.Id;
+    this.name = player.name;
+    this.scores = player.scores
+      .getScores()
+      .map(
+        (score) =>
+          new ScoreDTO(
+            score.date.getDate(),
+            score.point.getPoint(),
+            score.mode.getMode()
+          )
+      );
+  }
 }
-
-export default PlayerDTO;

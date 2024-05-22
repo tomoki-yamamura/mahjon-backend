@@ -1,6 +1,6 @@
-import ScoreList from "../collection/scoreList";
-import PlayedDate from "../value/date";
-import PlayMode from "../value/mode";
+import ScoreList from "../../collection/scoreList";
+import PlayedDate from "../../value/date";
+import PlayMode from "../../value/mode";
 
 export type getScoresByDateParamsAndMode = {
   mode: PlayMode

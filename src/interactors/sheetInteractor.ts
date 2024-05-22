@@ -1,6 +1,6 @@
 import { inject, injectable } from "inversify";
 import { ISheetInteractor } from "../interface/ISheetInteractor";
-import { ISheetRepository } from "../domain/repository/ISheetRepository";
+import { ISheetRepository } from "../domain/interface/repository/ISheetRepository";
 import TYPES from "../config/inversity.types";
 import { Sheet } from "./dto/sheet";
 

@@ -1,11 +1,11 @@
-import Player from "../../domain/entities/player";
+import Player from "../../../domain/entities/player";
 import { IPlayer } from "../db/model/player";
 import { IScore } from "../db/model/score";
-import Score from "../../domain/value/score";
-import Point from "../../domain/value/point";
-import PlayedDate from "../../domain/value/date";
-import PlayMode from "../../domain/value/mode";
-import ScoreList from "../../domain/collection/scoreList";
+import Score from "../../../domain/value/score";
+import Point from "../../../domain/value/point";
+import PlayedDate from "../../../domain/value/date";
+import PlayMode from "../../../domain/value/mode";
+import ScoreList from "../../../domain/collection/scoreList";
 
 export function reconstructPlayers(scoreModels: IScore[]): Player[] {
   const playerMap: { [key: string]: { name: string, scores: Score[] } } = {};

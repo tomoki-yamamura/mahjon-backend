@@ -13,6 +13,10 @@ class Player {
     this.scores = scores
   }
 
+  // getScores(): number[] {
+  //   return this.scores.getScores()
+  // }
+  
   totalScores(): Point {
     return this.scores.totalScorePoint()
   }

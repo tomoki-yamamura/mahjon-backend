@@ -11,10 +11,14 @@ const TYPES = {
   SheetController: Symbol.for("SheetController"),
   LineController: Symbol.for("LineController"),
   HealthController: Symbol.for("HealthController"),
+  LineMessageSender: Symbol.for("LineMessageSender"),
 
+  // infrastructure
+  LineClient: Symbol.for("LineClient"),
+  
   // DB
   ScoreModel: Symbol.for("ScoreModel"),
-  PlayerModel: Symbol.for("PlayerModel")
+  PlayerModel: Symbol.for("PlayerModel"),
 };
 
 export default TYPES;

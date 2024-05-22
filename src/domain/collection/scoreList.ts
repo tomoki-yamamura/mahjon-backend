@@ -20,7 +20,7 @@ class ScoreList {
   }
 
   getScores(): Score[] {
-    return [...this.scores];
+    return [...this.scores]
   }
 
   filterScoresByDate(startDate: PlayedDate, endDate: PlayedDate): ScoreList {

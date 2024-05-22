@@ -1,4 +1,5 @@
-import { PlayerTotalPointDTO } from "../interactors/dto/output/playerTotalPoint";
+import Player from "../domain/entities/player";
+import PlayerDTO from "../interactors/dto/player";
 
 export type params = {
   mode: string
@@ -7,5 +8,6 @@ export type params = {
 };
 
 export interface ILineInteractor {
-  getScoresByDateAndMode(input: params): Promise<PlayerTotalPointDTO[]>;
+  getScoresByDateAndMode(input: params): Promise<PlayerDTO[]>;
+  replyMessage(replyToken: string, players: PlayerDTO[]): Promise<void>;
 }

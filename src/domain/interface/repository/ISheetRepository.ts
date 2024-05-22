@@ -1,4 +1,4 @@
-import { Sheet } from "../entities/sheet";
+import { Sheet } from "../../entities/sheet";
 
 type params = {
   id: string;

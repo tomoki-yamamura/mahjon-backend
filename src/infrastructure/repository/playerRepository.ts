@@ -1,8 +1,8 @@
 import { inject, injectable } from "inversify";
-import TYPES from "../config/inversity.types";
-import { IPlayerRepository } from "../domain/repository/IPlayerRepository";
+import TYPES from "../../config/inversity.types";
+import { IPlayerRepository } from "../../domain/interface/repository/IPlayerRepository";
 import { Model } from "mongoose";
-import Player from "../domain/entities/player";
+import Player from "../../domain/entities/player";
 import { reconstructPlayers } from "./factory/player";
 import { IScore } from "./db/model/score";
 

@@ -4,7 +4,6 @@ import sheetsRouter from "../routes/sheetRoutes"
 import healthRouter from "../routes/healthRoutes"
 import lineRouter from "../routes/lineRoutes"
 
-
 function createServer() {
   const app: Application = express();
   app.use(cors());

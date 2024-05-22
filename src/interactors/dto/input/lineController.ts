@@ -49,12 +49,14 @@ dateMap.set("Today", getToday());
 dateMap.set("Weekly", getWeekly());
 dateMap.set("Monthly", getMonthly());
 
-export function constructLineInput(req: LineWebhookRequest): params {
+export function constructLineInput(req: LineWebhookRequest): [string, params] {
   const text = req.events[0].message.text
   const [date, mode] = text.split(' ')
-  return {
+  const input = {
     mode: mode,
     startDate: dateMap.get(date)!,
     endDate: getToday()
   }
+  const replyToken = req.events[0].replyToken
+  return [replyToken, input]
 }

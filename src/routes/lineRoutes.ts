@@ -7,6 +7,6 @@ const router = express.Router();
 
 const controller = container.get<LineController>(TYPES.LineController);
 
-router.get("/callback", controller.getPlayerScoresByDate.bind(controller));
+router.post("/callback", controller.getPlayerScoresByDate.bind(controller));
 
 export default router;
