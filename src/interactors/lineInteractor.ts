@@ -1,6 +1,6 @@
 import { inject, injectable } from "inversify";
 import TYPES from "../config/inversity.types";
-import { PlayerTotalPointDTO } from "./dto/playerTotalPoint";
+import { PlayerTotalPointDTO } from "./dto/output/playerTotalPoint";
 import { ILineInteractor } from "../interface/ILineInteractor";
 import { IScoreRepository } from "../domain/repository/IScoreRepository";
 import { IPlayerRepository } from "../domain/repository/IPlayerRepository";
@@ -28,7 +28,6 @@ export class LineInteractor implements ILineInteractor {
     const filteredPlayersByMode = filteredPlayersScore.map((player) => {
       return player.filterScoresByMode(modeValue)
     })
-    
     return filteredPlayersByMode.map((player) => new PlayerTotalPointDTO(player))
   }
 }

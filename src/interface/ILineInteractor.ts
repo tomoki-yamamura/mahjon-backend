@@ -1,6 +1,6 @@
-import { PlayerTotalPointDTO } from "../interactors/dto/playerTotalPoint";
+import { PlayerTotalPointDTO } from "../interactors/dto/output/playerTotalPoint";
 
-type params = {
+export type params = {
   mode: string
   startDate: Date;
   endDate: Date;

@@ -1,9 +1,8 @@
 import express, { NextFunction } from "express";
-import { ISheetInteractor } from "../interface/ISheetInteractor";
 import { inject, injectable } from "inversify";
 import TYPES from "../config/inversity.types";
-import { IPlayerInteractor } from "../interface/IPlayerInteractor";
 import { ILineInteractor } from "../interface/ILineInteractor";
+import { LineWebhookRequest, constructLineInput } from "../interactors/dto/input/lineController";
 
 @injectable()
 export class LineController {
@@ -12,19 +11,12 @@ export class LineController {
     this.interactor = interactor;
   }
   async getPlayerScoresByDate(
-    req: express.Request,
+    req: express.Request<{}, {}, LineWebhookRequest>,
     res: express.Response,
     next: NextFunction
   ) {
     try {
-      const mode = "3players"
-      let startDate  = new Date('2024/04/27')
-      const endDate = new Date()
-      const input = {
-        mode,
-        startDate,
-        endDate
-      }
+      const input = constructLineInput(req.body)
       const data = await this.interactor.getScoresByDateAndMode(input);
       return res.status(200).json(data);
     } catch (error) {

@@ -2,7 +2,6 @@ import ScoreList from "../collection/scoreList";
 import PlayedDate from "../value/date";
 import PlayMode from "../value/mode";
 import Point from "../value/point";
-import Score from "../value/score";
 
 class Player {
   readonly Id: string;

@@ -15,7 +15,7 @@ export class PlayerRepository implements IPlayerRepository {
     this.scoreModel = scoreModel;
   }
   async getAllPlayers(): Promise<Player[]> {
-    const scores = await this.scoreModel.find({mode: "3players"}).populate('playerId', 'name').exec();
+    const scores = await this.scoreModel.find().populate('playerId', 'name').exec();
     const players = reconstructPlayers(scores)
     return players
   }
