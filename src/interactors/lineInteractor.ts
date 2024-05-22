@@ -11,18 +11,18 @@ import { constructPlayerDTO, reconstructPlayer } from "./dto/factory/playerTotal
 @injectable()
 export class LineInteractor implements ILineInteractor {
   private repository: IPlayerRepository;
-  private lineClient: IMessageSender;
+  private messageSender: IMessageSender;
   constructor(
     @inject(TYPES.PlayerRepository) repository: IPlayerRepository,
-    @inject(TYPES.LineClient) lineClient: IMessageSender
+    @inject(TYPES.LineMessageSender) messageSender: IMessageSender
   ) {
     this.repository = repository;
-    this.lineClient = lineClient;
+    this.messageSender = messageSender;
   }
 
   async replyMessage(replyToken: string, playersDTO: PlayerDTO[]): Promise<void> {
     const players = playersDTO.map((dto) => reconstructPlayer(dto))
-    await this.lineClient.replyMessage(replyToken, players)
+    await this.messageSender.replyMessage(replyToken, players)
   }
 
   async getScoresByDateAndMode({

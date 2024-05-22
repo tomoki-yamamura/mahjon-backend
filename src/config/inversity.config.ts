@@ -1,5 +1,5 @@
-import TYPES from "./inversity.types";
 import "reflect-metadata";
+import TYPES from "./inversity.types";
 import { Container } from "inversify";
 import { ISheetInteractor } from "../interface/ISheetInteractor";
 import { ISheetRepository } from "../domain/interface/repository/ISheetRepository";
@@ -26,6 +26,7 @@ import { messagingApi } from '@line/bot-sdk';
 import { LineMessageSender } from "../infrastructure/line/message";
 import { IMessageSender } from "../domain/interface/line/IMessageSender";
 const { MessagingApiClient } = messagingApi;
+
 const container = new Container();
 
 const lineClient = new MessagingApiClient({
@@ -54,4 +55,3 @@ container.bind<messagingApi.MessagingApiClient>(TYPES.LineClient).toConstantValu
 container.bind<Model<IPlayer>>(TYPES.PlayerModel).toConstantValue(PlayerModel)
 container.bind<Model<IScore>>(TYPES.ScoreModel).toConstantValue(ScoreModel)
 export default container;
-
