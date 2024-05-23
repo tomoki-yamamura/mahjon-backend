@@ -6,7 +6,7 @@ import PlayMode from "../domain/value/mode";
 import PlayedDate from "../domain/value/date";
 import { IMessageSender } from "../domain/interface/line/IMessageSender";
 import PlayerDTO from "./dto/player";
-import { constructPlayerDTO, reconstructPlayer } from "./dto/factory/playerTotalPoint";
+import {  reconstructPlayer } from "./dto/factory/playerTotalPoint";
 
 @injectable()
 export class LineInteractor implements ILineInteractor {
