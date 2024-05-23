@@ -4,6 +4,7 @@ import { inject, injectable } from "inversify";
 import { Sheet } from "../../domain/entities/sheet";
 import { Row } from "../../domain/entities/row";
 import TYPES from "../../config/inversity.types";
+import SheetDate from "../../domain/value/sheetDate";
 
 @injectable()
 export class SheetRepository implements ISheetRepository {
@@ -17,8 +18,8 @@ export class SheetRepository implements ISheetRepository {
     endDate,
   }: {
     id: string;
-    startDate: string;
-    endDate: string;
+    startDate: SheetDate;
+    endDate: SheetDate;
   }): Promise<Sheet> {
     await this.doc.loadInfo();
     const sheet = this.doc.sheetsByIndex[Number(id)];
@@ -27,7 +28,7 @@ export class SheetRepository implements ISheetRepository {
     const rowEntity = rows
       .filter((row) => {
         const obj = row.toObject();
-        return obj.Date >= startDate && obj.Date <= endDate;
+        return obj.Date >= startDate.getDate() && obj.Date <= endDate.getDate();
       })
       .map((row) => {
         const obj = row.toObject();

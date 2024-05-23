@@ -3,6 +3,7 @@ import { ISheetInteractor } from "../interface/ISheetInteractor";
 import { ISheetRepository } from "../domain/interface/repository/ISheetRepository";
 import TYPES from "../config/inversity.types";
 import { Sheet } from "./dto/sheet";
+import SheetDate from "../domain/value/sheetDate";
 
 @injectable()
 export class SheetInteractor implements ISheetInteractor {
@@ -20,7 +21,14 @@ export class SheetInteractor implements ISheetInteractor {
     startDate: string;
     endDate: string;
   }) {
-    const result = await this.repository.querySheetByDateRange({id, startDate, endDate});
+    const vstartDate = new SheetDate(startDate)
+    const vendDate = new SheetDate(endDate)
+    const params = {
+      id: id,
+      startDate: vstartDate,
+      endDate: vendDate
+    }
+    const result = await this.repository.querySheetByDateRange(params);
     const sheet = new Sheet(result.id, result.rows)
     return sheet
   }
