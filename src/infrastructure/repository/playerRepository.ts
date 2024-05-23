@@ -14,6 +14,14 @@ export class PlayerRepository implements IPlayerRepository {
   constructor(@inject(TYPES.ScoreModel) scoreModel: Model<IScore>) {
     this.scoreModel = scoreModel;
   }
+  async getAllPlayers(): Promise<Player[]> {
+    const scores = await this.scoreModel
+      .find()
+      .populate("playerId", "name")
+      .exec();
+    const players = reconstructPlayers(scores);
+    return players;
+  }
   async getPlayersByModeAndDate(
     mode: PlayMode,
     startDate: PlayedDate,
@@ -27,14 +35,6 @@ export class PlayerRepository implements IPlayerRepository {
           $lte: endDate.getDate(),
         },
       })
-      .populate("playerId", "name")
-      .exec();
-    const players = reconstructPlayers(scores);
-    return players;
-  }
-  async getAllPlayers(): Promise<Player[]> {
-    const scores = await this.scoreModel
-      .find()
       .populate("playerId", "name")
       .exec();
     const players = reconstructPlayers(scores);

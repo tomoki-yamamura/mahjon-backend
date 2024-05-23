@@ -3,6 +3,7 @@ import cors from "cors";
 import sheetsRouter from "../routes/sheetRoutes"
 import healthRouter from "../routes/healthRoutes"
 import lineRouter from "../routes/lineRoutes"
+import playerRouter from "../routes/playerRoute"
 
 function createServer() {
   const app: Application = express();
@@ -12,6 +13,7 @@ function createServer() {
   app.use(sheetsRouter)
   app.use(healthRouter)
   app.use(lineRouter)
+  app.use(playerRouter)
 
   return app
 }

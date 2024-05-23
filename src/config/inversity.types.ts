@@ -1,24 +1,30 @@
 const TYPES = {
-  SheetRepository: Symbol.for("SheetRepository"),
-  PlayerRepository: Symbol.for("PlayerRepository"),
-  ScoreRepository: Symbol.for("ScoreRepository"),
-  HanchanRepository: Symbol.for("HanchanRepository"),
+  // controller
+  SheetController: Symbol.for("SheetController"),
+  HealthController: Symbol.for("HealthController"),
+  LineController: Symbol.for("LineController"),
+  PlayerController: Symbol.for("PlayerController"),
+
+  //interactor
   SheetInteractor: Symbol.for("SheetInteractor"),
   PlayerInteractor: Symbol.for("PlayerInteractor"),
-  LineInteractor: Symbol.for("LineInteractor"),
   HanchanInteractor: Symbol.for("HanchanInteractor"),
-  gsDoc: Symbol.for("gsDoc"),
-  SheetController: Symbol.for("SheetController"),
-  LineController: Symbol.for("LineController"),
-  HealthController: Symbol.for("HealthController"),
-  LineMessageSender: Symbol.for("LineMessageSender"),
+  LineInteractor: Symbol.for("LineInteractor"),
 
-  // infrastructure
+  // irepository
+  SheetRepository: Symbol.for("SheetRepository"),
+  PlayerRepository: Symbol.for("PlayerRepository"),
+
+  // infra/line
+  LineMessageSender: Symbol.for("LineMessageSender"),
   LineClient: Symbol.for("LineClient"),
-  
-  // DB
+
+  //infra/mongoDB/model
   ScoreModel: Symbol.for("ScoreModel"),
   PlayerModel: Symbol.for("PlayerModel"),
+
+  // infra/GoogleSpreadSheet
+  gsDoc: Symbol.for("gsDoc"),
 };
 
 export default TYPES;
