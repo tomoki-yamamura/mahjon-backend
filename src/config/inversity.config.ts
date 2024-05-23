@@ -8,10 +8,6 @@ import { SheetInteractor } from "../interactors/sheetInteractor";
 import { SheetRepository } from "../infrastructure/repository/sheetRepository";
 import { HealthController } from "../controllers/healthController";
 import { GoogleSpreadsheet } from "google-spreadsheet";
-import {
-  sheetID,
-  serviceAccountAuth,
-} from "../infrastructure/repository/googleSheet/google-sheet-config";
 import { Model } from "mongoose";
 import { IPlayerRepository } from "../domain/interface/repository/IPlayerRepository";
 import { IPlayer, PlayerModel } from "../infrastructure/repository/db/model/player";
@@ -25,13 +21,10 @@ import { LineController } from "../controllers/lineController";
 import { messagingApi } from '@line/bot-sdk';
 import { LineMessageSender } from "../infrastructure/line/message";
 import { IMessageSender } from "../domain/interface/line/IMessageSender";
-const { MessagingApiClient } = messagingApi;
+import googleSpreadSheetDoc from "./google/spreadsheet";
+import lineClient from "./line/messageClient";
 
 const container = new Container();
-
-const lineClient = new MessagingApiClient({
-  channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN as string,
-})
 
 container.bind<ISheetRepository>(TYPES.SheetRepository).to(SheetRepository);
 container.bind<IPlayerRepository>(TYPES.PlayerRepository).to(PlayerRepository);
@@ -40,13 +33,7 @@ container.bind<IPlayerInteractor>(TYPES.PlayerInteractor).to(PlayerInteractor);
 container.bind<ILineInteractor>(TYPES.LineInteractor).to(LineInteractor);
 container.bind<IMessageSender>(TYPES.LineMessageSender).to(LineMessageSender);
 container.bind(TYPES.SheetController).to(SheetController);
-container
-  .bind<GoogleSpreadsheet>(TYPES.gsDoc)
-  .toDynamicValue(() => {
-    return new GoogleSpreadsheet(sheetID, serviceAccountAuth);
-  })
-  .inSingletonScope();
-
+container.bind<GoogleSpreadsheet>(TYPES.gsDoc).toConstantValue(googleSpreadSheetDoc)
 container.bind(TYPES.HealthController).to(HealthController);
 container.bind(TYPES.LineController).to(LineController);
 
