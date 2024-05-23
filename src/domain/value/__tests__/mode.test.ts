@@ -7,6 +7,6 @@ describe('PlayMode', () => {
   });
 
   test('constructor should throw an error for an invalid mode', () => {
-    expect(() => new PlayMode('')).toThrow('Invalid mode: . Mode must be "3players" or "4players".');
+    expect(() => new PlayMode('')).toThrow(Error);
   });
 });

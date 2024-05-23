@@ -34,18 +34,11 @@ export class LineInteractor implements ILineInteractor {
     startDate: Date;
     endDate: Date;
   }): Promise<PlayerDTO[]> {
-    const modeValue = new PlayMode(mode);
-    const startDateValue = new PlayedDate(startDate);
-    const endDateValue = new PlayedDate(endDate);
-    const players = await this.repository.getAllPlayers();
-    const filteredPlayersScore = players.map((player) => {
-      return player.filterScoresByDate(startDateValue, endDateValue);
-    });
-    const filteredPlayersByMode = filteredPlayersScore.map((player) => {
-      return player.filterScoresByMode(modeValue);
-    });
-    return filteredPlayersByMode.map(
-      (player) => constructPlayerDTO(player)
-    );
+    const vmode = new PlayMode(mode)
+    const vstartDate = new PlayedDate(startDate)
+    const vendDate = new PlayedDate(endDate)
+    const players = await this.repository.getPlayersByModeAndDate(vmode, vstartDate, vendDate);
+    const playerDTOs = players.map((player) => new PlayerDTO(player)); 
+    return playerDTOs
   }
 }

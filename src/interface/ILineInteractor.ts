@@ -1,4 +1,3 @@
-import Player from "../domain/entities/player";
 import PlayerDTO from "../interactors/dto/player";
 
 export type params = {
