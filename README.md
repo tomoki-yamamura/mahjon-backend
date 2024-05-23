@@ -21,4 +21,12 @@ http://localhost:8080/api-docs
 ```
 
 ## prerequisite
-For integrating with Google Sheets, please refer to this [repository](https://github.com/tomoki-yamamura/mahjong-score).
+- For integrating with Google Sheets, please refer to this [repository](https://github.com/tomoki-yamamura/mahjong-score).
+
+- For integrating with LINE, please refer to this [repository](https://github.com/tomoki-yamamura/line-richmenu).
+
+## LINE integration
+If you succesfully integrate with LINE, you can receive webhook from LINE and you reply a score automatically.
+
+
+![LINE RichMenu](./assets/line.jpg)
