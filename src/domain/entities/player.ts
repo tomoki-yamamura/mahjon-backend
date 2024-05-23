@@ -12,10 +12,6 @@ class Player {
     this.name = name
     this.scores = scores
   }
-
-  // getScores(): number[] {
-  //   return this.scores.getScores()
-  // }
   
   totalScores(): Point {
     return this.scores.totalScorePoint()
