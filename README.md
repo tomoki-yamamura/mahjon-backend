@@ -1,33 +1,24 @@
 # How to use
 ## How to start
 ```
-npm run dev
+npm run start
 ```
 
 ## endpoint
 
-```
-GET /sheets/{SheetID}?startDate={YYYY-MM-DD}&endDate={YYYY-MM-DD}
-```
-SheetID = 0   三人用麻雀のgoogle spread sheetを指定
-SheetID = 1   三人用麻雀のgoogle spread sheetを指定
+This project uses Swagger to provide interactive API documentation. You can view the API documentation in your browser by following these steps:
 
-## response
-```json
-{
-    "id": "0",
-    "rows": [
-        {
-            "ID": "1",
-            "Date": "2024/04/01",
-            "Timestamp": "21:03",
-            "Users": {
-                "PlayerA": "-5",
-                "PlayerB": "40",
-                "PlayerC": "-35",
-                "PlayerD": "0",
-            }
-        }
-    ]
-}
+Make sure the server is running. You can start the server by running the following command:
+
 ```
+npm run start
+```
+
+Open your browser and navigate to:
+
+```
+http://localhost:8080/api-docs
+```
+
+## prerequisite
+For integrating with Google Sheets, please refer to this [repository](https://github.com/tomoki-yamamura/mahjong-score).
