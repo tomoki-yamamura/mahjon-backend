@@ -1,5 +1,6 @@
 import "reflect-metadata";
 import TYPES from "./inversity.types";
+import { Model } from "mongoose";
 import { Container } from "inversify";
 import { ISheetInteractor } from "../interface/ISheetInteractor";
 import { ISheetRepository } from "../domain/interface/repository/ISheetRepository";
@@ -8,7 +9,6 @@ import { SheetInteractor } from "../interactors/sheetInteractor";
 import { SheetRepository } from "../infrastructure/repository/sheetRepository";
 import { HealthController } from "../controllers/healthController";
 import { GoogleSpreadsheet } from "google-spreadsheet";
-import { Model } from "mongoose";
 import { IPlayerRepository } from "../domain/interface/repository/IPlayerRepository";
 import { IPlayer, PlayerModel } from "../infrastructure/repository/db/model/player";
 import { IPlayerInteractor } from "../interface/IPlayerInteractor";

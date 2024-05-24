@@ -1,7 +1,8 @@
 # How to use
 ## How to start
 ```
-npm run start
+cd docker
+docker-compose up
 ```
 
 ## endpoint
@@ -9,10 +10,6 @@ npm run start
 This project uses Swagger to provide interactive API documentation. You can view the API documentation in your browser by following these steps:
 
 Make sure the server is running. You can start the server by running the following command:
-
-```
-npm run start
-```
 
 Open your browser and navigate to:
 

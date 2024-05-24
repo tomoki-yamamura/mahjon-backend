@@ -2,7 +2,7 @@ import express, { NextFunction } from "express";
 import { inject, injectable } from "inversify";
 import TYPES from "../config/inversity.types";
 import { ILineInteractor } from "../interface/ILineInteractor";
-import { LineWebhookRequest, constructLineInput } from "../interactors/dto/input/lineController";
+import { LineWebhookRequest, constructLineInput } from "../interactors/dto/factory/lineWebhook";
 
 @injectable()
 export class LineController {
@@ -21,7 +21,7 @@ export class LineController {
     console.log(input);
       const players = await this.interactor.getScoresByDateAndMode(input);
       await this.interactor.replyMessage(replyToken, players)
-      return res.status(201).json(players);
+      return res.status(200).json({});
     } catch (error) {
       console.error(error);
       next(error);

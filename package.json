@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "build": "tsc",
-    "dev": "node ./build/index.js",
+    "dev": "node ./build/src/index.js",
     "start": "ts-node ./src/index.ts",
     "ngrok": "ngrok http http://localhost:8080"
   },
