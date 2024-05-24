@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { params } from "../../../interface/ILineInteractor";
 
 export interface LineWebhookEvent {
@@ -29,23 +29,29 @@ export interface LineWebhookRequest {
 
 type richMenuText = "Today 3players" | "Weekly 3players" | "Monthly 3players" | "Today 4players" | "Weekly 4players" | "Monthly 4players"
 
-function getToday(): Date {
-  return new Date();
+function getStartOfToday() {
+  const startOfToday = moment().startOf('day').tz('Asia/Tokyo');
+  return startOfToday.toDate();
+}
+
+function getEndOfToday() {
+  const endOfToday = moment().endOf('day').tz('Asia/Tokyo');
+  return endOfToday.toDate();
 }
 
 function getWeekly(): Date {
-  const monday = moment().startOf('isoWeek'); // ISO 8601: Monday is the first day of the week
+  const monday = moment().startOf('isoWeek').tz('Asia/Tokyo'); // ISO 8601: Monday is the first day of the week
   return monday.toDate();
 }
 
 function getMonthly(): Date {
-  const firstDayOfMonth = moment().startOf('month');
+  const firstDayOfMonth = moment().startOf('month').tz('Asia/Tokyo');
   return firstDayOfMonth.toDate();
 }
 
 const dateMap = new Map<string, Date>();
 
-dateMap.set("Today", getToday());
+dateMap.set("Today", getStartOfToday());
 dateMap.set("Weekly", getWeekly());
 dateMap.set("Monthly", getMonthly());
 
@@ -55,8 +61,10 @@ export function constructLineInput(req: LineWebhookRequest): [string, params] {
   const input = {
     mode: mode,
     startDate: dateMap.get(date)!,
-    endDate: getToday()
+    endDate: getEndOfToday()
   }
+  console.log(input);
+  
   const replyToken = req.events[0].replyToken
   return [replyToken, input]
 }

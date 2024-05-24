@@ -38,6 +38,7 @@ export class LineInteractor implements ILineInteractor {
     const vstartDate = new PlayedDate(startDate)
     const vendDate = new PlayedDate(endDate)
     const players = await this.repository.getPlayersByModeAndDate(vmode, vstartDate, vendDate);
+    console.log(players);
     const playerDTOs = players.map((player) => new PlayerDTO(player)); 
     return playerDTOs
   }

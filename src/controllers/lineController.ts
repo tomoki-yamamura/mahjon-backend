@@ -18,10 +18,12 @@ export class LineController {
     try {
       if (req.body.events[0].type === "postback") return res.status(201)
       const [replyToken, input] = constructLineInput(req.body)
+    console.log(input);
       const players = await this.interactor.getScoresByDateAndMode(input);
       await this.interactor.replyMessage(replyToken, players)
       return res.status(201).json(players);
     } catch (error) {
+      console.error(error);
       next(error);
     }
   }
