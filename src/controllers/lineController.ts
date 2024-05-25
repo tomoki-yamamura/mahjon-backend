@@ -14,7 +14,7 @@ export class LineController {
   constructor(@inject(TYPES.LineInteractor) interactor: ILineInteractor) {
     this.interactor = interactor;
   }
-  async getPlayerScoresByDate(
+  async sendScoreToPlayer(
     req: express.Request<{}, {}, LineWebhookRequest>,
     res: express.Response,
     next: NextFunction
@@ -23,7 +23,7 @@ export class LineController {
       if (req.body.events[0].type === "postback") return res.status(201);
       const input: sendScoreToPlayerInput  = constructLineInput(req.body);
       await this.interactor.sendScoreToPlayer(input);
-      return res.status(200).json({});
+      return res.status(201).json({});
     } catch (error) {
       console.error(error);
       next(error);
