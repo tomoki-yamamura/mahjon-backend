@@ -4,7 +4,7 @@ import ScoreList from "../../collection/scoreList";
 import PlayMode from "../../value/mode";
 import Point from "../../value/point";
 import Player from "../player";
-import { fixDate, oneSecLaterDate, oneBeforeDate } from "../../value/__tests__/fixture/date";
+import { fixDate, oneSecLaterDate } from "../../value/__tests__/fixture/date";
 
 describe('Player', () => {
   let mockScoreList: jest.Mocked<ScoreList>;

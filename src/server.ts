@@ -1,11 +1,11 @@
 import express, { Application } from "express";
 import cors from "cors";
 import swaggerUi from "swagger-ui-express";
-import sheetsRouter from "../routes/sheetRoutes";
-import healthRouter from "../routes/healthRoutes";
-import lineRouter from "../routes/lineRoutes";
-import playerRouter from "../routes/playerRoute";
-import swaggerDocs from "../../swaggerConfig";
+import sheetsRouter from "./routes/sheetRoutes";
+import healthRouter from "./routes/healthRoutes";
+import lineRouter from "./routes/lineRoutes";
+import playerRouter from "./routes/playerRoute";
+import swaggerDocs from "./../swaggerConfig";
 
 function createServer() {
   const app: Application = express();

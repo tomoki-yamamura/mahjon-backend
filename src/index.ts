@@ -1,5 +1,5 @@
 import "reflect-metadata"
-import createServer from "./utils/server";
+import createServer from "./server";
 import mongoose from "mongoose";
 
 const PORT = process.env.PORT || 8080;

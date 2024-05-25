@@ -3,6 +3,7 @@ import TYPES from "../../config/inversity.types";
 import { IMessageSender } from "../../domain/interface/line/IMessageSender";
 import Player from "../../domain/entities/player";
 import { messagingApi } from "@line/bot-sdk";
+import ReplyMessage from "../../domain/service/replyMessage";
 
 @injectable()
 export class LineMessageSender implements IMessageSender {
@@ -13,16 +14,14 @@ export class LineMessageSender implements IMessageSender {
     this.lineClient = client;
   }
   async replyMessage(replyToken: string, players: Player[]): Promise<void> {
-    const messages = players
-      .map((player) => `${player.name}さん: ${player.totalScores().getPoint()}`)
-      .reduce((acc, cur) => acc + cur + "\n", "");
-
+    const replyMessage = new ReplyMessage(players)
+    const message = replyMessage.formatMessage()
     await this.lineClient.replyMessage({
       replyToken: replyToken,
       messages: [
         {
           type: "text",
-          text: messages,
+          text: message,
         },
       ],
     });
