@@ -2,10 +2,10 @@ import 'reflect-metadata';
 import { IMessageSender } from "../../domain/interface/line/IMessageSender";
 import { IPlayerRepository } from "../../domain/interface/repository/IPlayerRepository";
 import * as fixtureEntities from "../../domain/entities/__tests__/fixture/index";
-import PlayerDTO from "../dto/player";
 import { LineInteractor } from "../lineInteractor";
 import Player from '../../domain/entities/player';
-import { fixDate, mode3players, oneSecLaterDate } from '../../domain/value/__tests__/fixture';
+import PlayedDate from '../../domain/value/date';
+import PlayMode from '../../domain/value/mode';
 
 describe('LineInteractor', () => {
   let interactor: LineInteractor;
@@ -21,6 +21,7 @@ describe('LineInteractor', () => {
 
     messageSenderMock = {
       replyMessage: jest.fn(),
+      showLoadingAnimation: jest.fn(),
     } as jest.Mocked<IMessageSender>;
 
     interactor = new LineInteractor(playerRepositoryMock, messageSenderMock);
@@ -30,26 +31,25 @@ describe('LineInteractor', () => {
     jest.clearAllMocks();
   });
 
-  it('replyMessage should call messageSender.replyMessage with correct arguments', async () => {
-    const replyToken = 'dummyReplyToken';
-    const playerDTOs: PlayerDTO[] = [new PlayerDTO(fixtureEntities.player)];
+  it('sendScoreToPlayerInput should call correct sequence and with correct arguments', async () => {
+    const input = {
+      replyToken: 'dummyReplyToken',
+      userId: 'dummyUserId',
+      mode: '3players',
+      startDate: new Date(),
+      endDate: new Date(),
+    }
+    const dummyPlayers: Player[] = [fixtureEntities.player]
 
-    await interactor.replyMessage(replyToken, playerDTOs);
+    playerRepositoryMock.getPlayersByModeAndDate.mockResolvedValue(dummyPlayers);
+    
+    await interactor.sendScoreToPlayer(input);
 
-    expect(messageSenderMock.replyMessage).toHaveBeenCalledWith(replyToken, [fixtureEntities.player]);
-  });
-
-  it('getScoresByDateAndMode should return correct PlayerDTOs', async () => {
-
-    const mode = mode3players.getMode();
-    const startDate = fixDate.getDate();
-    const endDate = oneSecLaterDate.getDate();
-    const players: Player[] = [fixtureEntities.player]
-
-    playerRepositoryMock.getPlayersByModeAndDate.mockResolvedValue(players);
-
-    const result = await interactor.getScoresByDateAndMode({ mode, startDate, endDate });
-
-    expect(playerRepositoryMock.getPlayersByModeAndDate).toHaveBeenCalledWith(mode3players, fixDate, oneSecLaterDate)
+    const vmode = new PlayMode(input.mode);
+    const vstartDate = new PlayedDate(input.startDate);
+    const vendDate = new PlayedDate(input.endDate);
+    
+    expect(playerRepositoryMock.getPlayersByModeAndDate).toHaveBeenCalledWith(vmode, vstartDate, vendDate);
+    expect(messageSenderMock.replyMessage).toHaveBeenCalledWith(input.replyToken, dummyPlayers);
   });
 });

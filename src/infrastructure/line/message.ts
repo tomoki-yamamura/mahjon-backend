@@ -4,6 +4,7 @@ import { IMessageSender } from "../../domain/interface/line/IMessageSender";
 import Player from "../../domain/entities/player";
 import { messagingApi } from "@line/bot-sdk";
 import ReplyMessage from "../../domain/service/replyMessage";
+import { ShowLoadingAnimationRequest } from "@line/bot-sdk/dist/messaging-api/model/models";
 
 @injectable()
 export class LineMessageSender implements IMessageSender {
@@ -12,6 +13,13 @@ export class LineMessageSender implements IMessageSender {
     @inject(TYPES.LineClient) client: messagingApi.MessagingApiClient
   ) {
     this.lineClient = client;
+  }
+  async showLoadingAnimation(replyToken: string, second: number): Promise<void> {
+    const input: ShowLoadingAnimationRequest = {
+      chatId: replyToken,
+      loadingSeconds: second
+    }
+   await  this.lineClient.showLoadingAnimation(input)
   }
   async replyMessage(replyToken: string, players: Player[]): Promise<void> {
     const replyMessage = new ReplyMessage(players)

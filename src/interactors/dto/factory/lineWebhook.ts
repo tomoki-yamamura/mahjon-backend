@@ -1,16 +1,17 @@
-import { LineWebhookRequest, params } from "../../../interface/ILineInteractor";
+import { LineWebhookRequest, sendScoreToPlayerInput } from '../../../interface/ILineInteractor';
 import { dateMap, getEndOfToday } from '../../../utils/date';
 
-export function constructLineInput(req: LineWebhookRequest): [string, params] {
+export function constructLineInput(req: LineWebhookRequest): sendScoreToPlayerInput {
   const text = req.events[0].message.text
   const [date, mode] = text.split(' ')
-  const input = {
-    mode: mode,
+  const replyToken = req.events[0].replyToken
+  const userId = req.events[0].source.userId
+  const input: sendScoreToPlayerInput = {
+    replyToken,
+    userId,
+    mode,
     startDate: dateMap.get(date)!,
     endDate: getEndOfToday()
   }
-  console.log(input);
-  
-  const replyToken = req.events[0].replyToken
-  return [replyToken, input]
+  return input
 }

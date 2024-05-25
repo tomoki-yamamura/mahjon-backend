@@ -1,13 +1,6 @@
-import PlayerDTO from "../interactors/dto/player";
-
-export interface LineWebhookRequest {
-  destination: string;
-  events: LineWebhookEvent[];
-}
-
 type richMenuText = "Today 3players" | "Weekly 3players" | "Monthly 3players" | "Today 4players" | "Weekly 4players" | "Monthly 4players"
 
-export interface LineWebhookEvent {
+interface LineWebhookEvent {
   type: string;
   message: {
     type: string;
@@ -28,13 +21,19 @@ export interface LineWebhookEvent {
   mode: string;
 }
 
-export type params = {
-  mode: string
+export interface LineWebhookRequest {
+  destination: string;
+  events: LineWebhookEvent[];
+}
+
+export type sendScoreToPlayerInput = {
+  replyToken: string;
+  userId: string;
+  mode: string;
   startDate: Date;
   endDate: Date;
-};
+}
 
 export interface ILineInteractor {
-  getScoresByDateAndMode(input: params): Promise<PlayerDTO[]>;
-  replyMessage(replyToken: string, players: PlayerDTO[]): Promise<void>;
+  sendScoreToPlayer(input: sendScoreToPlayerInput): Promise<void>
 }
