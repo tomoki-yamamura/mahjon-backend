@@ -26,4 +26,4 @@ http://localhost:8080/api-docs
 If you succesfully integrate with LINE, you can receive webhook from LINE and you reply a score automatically.
 
 
-![LINE RichMenu](./assets/line.jpg)
+![LINE RichMenu](./assets/replyMessage.gif)
