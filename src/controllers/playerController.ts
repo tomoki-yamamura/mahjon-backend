@@ -1,5 +1,4 @@
 import express, { NextFunction } from "express";
-import { ISheetInteractor } from "../interface/ISheetInteractor";
 import { inject, injectable } from "inversify";
 import TYPES from "../config/inversity.types";
 import { IPlayerInteractor } from "../interface/IPlayerInteractor";

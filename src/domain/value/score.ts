@@ -1,7 +1,6 @@
 import PlayedDate from "./date";
 import PlayMode from "./mode";
 import Point from "./point";
-import Player from "../entities/player";
 
 class Score {
   readonly date: PlayedDate;

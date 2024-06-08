@@ -24,7 +24,6 @@ export class SheetRepository implements ISheetRepository {
     await this.doc.loadInfo();
     const sheet = this.doc.sheetsByIndex[Number(id)];
     const rows = await sheet.getRows();
-    // if you have domain logic, you should use it first.
     const rowEntity = rows
       .filter((row) => {
         const obj = row.toObject();

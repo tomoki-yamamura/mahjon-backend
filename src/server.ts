@@ -15,7 +15,6 @@ function createServer() {
 
   app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-  // 例として、簡単なルートを追加
   /**
    * @swagger
    * /:
