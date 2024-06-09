@@ -20,6 +20,8 @@ http://localhost:8080/api-docs
 ## prerequisite
 - For integrating with Google Sheets, please refer to this [repository](https://github.com/tomoki-yamamura/mahjong-score).
 
+- For preparing with MongoDB, please refer to this [repository](https://github.com/tomoki-yamamura/mahjong-csv-to-mongodb).
+
 - For integrating with LINE, please refer to this [repository](https://github.com/tomoki-yamamura/line-richmenu).
 
 ## LINE integration
