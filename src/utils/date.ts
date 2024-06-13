@@ -26,10 +26,19 @@ dateMap.set("Today", getStartOfToday());
 dateMap.set("Weekly", getWeekly());
 dateMap.set("Monthly", getMonthly());
 
+function parseStringToDate(dateString: string): Date {
+  const date = new Date(dateString);
+  if (isNaN(date.getTime())) {
+    throw new Error("Invalid date string");
+  }
+  return date;
+}
+
 export {
   getStartOfToday,
   getEndOfToday,
   getWeekly,
   getMonthly,
+  parseStringToDate,
   dateMap
 }
