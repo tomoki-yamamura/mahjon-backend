@@ -1,3 +1,4 @@
+import PlayerList from "../collection/playerList";
 import Player from "../entities/player";
 import PlayedDateRange from "../value/dateRange";
 import PlayMode from "../value/mode";
@@ -24,8 +25,12 @@ class RankService {
       player.filterScoresByDate(dateRange).filterScoresByMode(mode)
     );
 
+    const playerList = new PlayerList(filteredPlayers)
+    const playedDates = playerList.getPlayedDates()
+
     const playerRankMap: playerRankMap = new Map();
 
+    
     return playerRankMap
   }
 
