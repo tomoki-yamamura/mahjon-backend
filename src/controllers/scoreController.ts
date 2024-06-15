@@ -9,28 +9,13 @@ import {
 import { constructLineInput } from "../interactors/dto/factory/lineWebhook";
 import { getScoresInputParams } from "./input/scoreController";
 import { constructGetScoreInput } from "../interactors/dto/factory/score";
-import { getScoreInteractorInput } from "../interface/IScoreInteractor";
+import { IScoreInteractor, getScoreInteractorInput } from "../interface/IScoreInteractor";
 
 @injectable()
 export class ScoreController {
-  private interactor: ILineInteractor;
-  constructor(@inject(TYPES.LineInteractor) interactor: ILineInteractor) {
+  private interactor: IScoreInteractor;
+  constructor(@inject(TYPES.LineInteractor) interactor: IScoreInteractor) {
     this.interactor = interactor;
-  }
-  async sendScoreToPlayer(
-    req: express.Request<{}, {}, LineWebhookRequest>,
-    res: express.Response,
-    next: NextFunction
-  ) {
-    try {
-      if (req.body.events[0].type === "postback") return res.status(201);
-      const input: sendScoreToPlayerInput  = constructLineInput(req.body);
-      await this.interactor.sendScoreToPlayer(input);
-      return res.status(201).json({});
-    } catch (error) {
-      console.error(error);
-      next(error);
-    }
   }
 
   async getScores(
