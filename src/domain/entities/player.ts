@@ -19,7 +19,7 @@ class Player {
   }
 
   getScoreByDate(date: PlayedDate): Score {
-    return this.scores.
+    return this.scores.filter((score) => score.date.isEqualTo(date))[0]
   }
 
   filterScoresByDate(dateRange: PlayedDateRange): Player {
