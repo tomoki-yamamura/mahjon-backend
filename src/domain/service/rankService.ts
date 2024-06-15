@@ -11,7 +11,6 @@ export type Rank = {
 };
 
 export type playerRankMap = Map<Player, Rank[]>;
-type datePlayerMap = Map<PlayedDate, Player[]>
 
 class RankService {
   private players: Player[];
