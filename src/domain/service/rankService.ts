@@ -33,7 +33,8 @@ class RankService {
         player.scores.some((score) => score.date.isEqualTo(date))
       );
       const calculateRank = this.calculateRank(playersWith, date)
-      const position = calculateRank.findIndex(e => e[0] === player)
+      const index = calculateRank.findIndex(([p, _]) => p.Id === player.Id);
+      const position = index + 1
       const rank: Rank = {
         date,
         position
@@ -41,7 +42,9 @@ class RankService {
       return rank
     })
     const playerRankMap: playerRankMap = new Map();
+    
     playerRankMap.set(player, ranks)
+    
     return playerRankMap
   }
 
@@ -53,7 +56,7 @@ class RankService {
   }
 
   private sortCalcMaps(calucMap: Map<Player, Point>) {
-    const result = [...calucMap.entries()].sort((a, b) => a[1].getPoint() - b[1].getPoint());
+    const result = [...calucMap.entries()].sort((a, b) => b[1].getPoint() - a[1].getPoint());
     return result
   }
 }

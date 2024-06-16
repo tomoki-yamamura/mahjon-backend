@@ -9,7 +9,8 @@ import {
 import { constructLineInput } from "../interactors/dto/factory/lineWebhook";
 import { getScoresInputParams } from "./input/scoreController";
 import { constructGetScoreInput } from "../interactors/dto/factory/score";
-import { IScoreInteractor, getScoreInteractorInput } from "../interface/IScoreInteractor";
+import { IScoreInteractor,  } from "../interface/IScoreInteractor";
+import { getScoreInteractorInput } from "../interactors/input/score";
 
 @injectable()
 export class ScoreController {

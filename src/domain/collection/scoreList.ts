@@ -2,7 +2,6 @@ import Score from "../value/score";
 import PlayedDate from "../value/date";
 import Point from "../value/point";
 import PlayMode from "../value/mode";
-import PlayedDateRange from "../value/dateRange";
 
 class ScoreList {
   private scores: Score[];
@@ -14,11 +13,6 @@ class ScoreList {
   add(score: Score): ScoreList {
     const newScores = [...this.scores, score];
     return new ScoreList(newScores);
-  }
-
-  getDateRange(): PlayedDate[] {
-    const sortedScores = [...this.scores].sort((a, b) => a.date.getDate().getTime() - b.date.getDate().getTime());
-    return sortedScores.map((score) => score.date)
   }
 
   totalScorePoint(): Point {
