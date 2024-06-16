@@ -20,7 +20,7 @@ describe('getPlayerRank for 3players', () => {
   const playerC = new Player("3", "playerC", new ScoreList([scores5, scores6]))
   const dateRange = new PlayedDateRange(fixtureValue.fixDate, fixtureValue.oneSecLaterDate)
 
-  const playerList = [playerA, playerB, playerC]
+  const playerList = new PlayerList([playerA, playerB, playerC])
 
   const rankService = new RankService(playerList)
 
@@ -80,7 +80,7 @@ describe('getPlayerRank for 4players', () => {
   const playerD = new Player("4", "playerD", new ScoreList([scores7, scores8]))
   const dateRange = new PlayedDateRange(fixtureValue.fixDate, fixtureValue.oneSecLaterDate)
 
-  const playerList = [playerA, playerB, playerC, playerD]
+  const playerList = new PlayerList([playerA, playerB, playerC, playerD])
 
   const rankService = new RankService(playerList)
   

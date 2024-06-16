@@ -4,12 +4,14 @@ const TYPES = {
   HealthController: Symbol.for("HealthController"),
   LineController: Symbol.for("LineController"),
   PlayerController: Symbol.for("PlayerController"),
+  RankController: Symbol.for("RankController"),
 
   //interactor
   SheetInteractor: Symbol.for("SheetInteractor"),
   PlayerInteractor: Symbol.for("PlayerInteractor"),
   HanchanInteractor: Symbol.for("HanchanInteractor"),
   LineInteractor: Symbol.for("LineInteractor"),
+  RankInteractor: Symbol.for("RankInteractor"),
 
   // irepository
   SheetRepository: Symbol.for("SheetRepository"),

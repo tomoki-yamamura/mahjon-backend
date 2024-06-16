@@ -13,8 +13,8 @@ export type Rank = {
 export type playerRankMap = Map<Player, Rank[]>;
 
 class RankService {
-  private players: Player[];
-  constructor(players: Player[]) {
+  private players: PlayerList;
+  constructor(players: PlayerList) {
     this.players = players;
   }
 
@@ -23,7 +23,7 @@ class RankService {
     dateRange: PlayedDateRange,
     mode: PlayMode
   ): playerRankMap {
-    const filteredPlayers = this.players.map((player) =>
+    const filteredPlayers = this.players.getPlayers().map((player) =>
       player.filterScoresByDate(dateRange).filterScoresByMode(mode)
     )
     const playerList = new PlayerList(filteredPlayers)

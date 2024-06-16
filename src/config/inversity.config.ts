@@ -24,6 +24,9 @@ import { IMessageSender } from "../domain/interface/line/IMessageSender";
 import googleSpreadSheetDoc from "./google/spreadsheet";
 import lineClient from "./line/messageClient";
 import { PlayerController } from "../controllers/playerController";
+import { RankController } from "../controllers/rankController";
+import { IRankInteractor } from "../interface/IRankInteractor";
+import { RankInteractor } from "../interactors/rankInteractor";
 
 const container = new Container();
 
@@ -32,11 +35,13 @@ container.bind(TYPES.SheetController).to(SheetController);
 container.bind(TYPES.HealthController).to(HealthController);
 container.bind(TYPES.LineController).to(LineController);
 container.bind(TYPES.PlayerController).to(PlayerController);
+container.bind(TYPES.RankController).to(RankController);
 
 //interactor
 container.bind<ISheetInteractor>(TYPES.SheetInteractor).to(SheetInteractor);
 container.bind<IPlayerInteractor>(TYPES.PlayerInteractor).to(PlayerInteractor);
 container.bind<ILineInteractor>(TYPES.LineInteractor).to(LineInteractor);
+container.bind<IRankInteractor>(TYPES.RankInteractor).to(RankInteractor);
 
 // irepository
 container.bind<ISheetRepository>(TYPES.SheetRepository).to(SheetRepository);

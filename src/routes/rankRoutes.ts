@@ -1,7 +1,7 @@
 import express from "express";
 import TYPES from "../config/inversity.types";
 import container from "../config/inversity.config";
-import { LineController } from "../controllers/lineController";
+import { RankController } from "../controllers/rankController";
 
 /**
  * @swagger
@@ -36,8 +36,8 @@ import { LineController } from "../controllers/lineController";
 
 const router = express.Router();
 
-const controller = container.get<LineController>(TYPES.LineController);
+const controller = container.get<RankController>(TYPES.RankController);
 
-router.post("/scores", controller.sendScoreToPlayer.bind(controller));
+router.post("/ranks", controller.getRanksByModeAndDate.bind(controller));
 
 export default router;

@@ -5,6 +5,7 @@ import sheetsRouter from "./routes/sheetRoutes";
 import healthRouter from "./routes/healthRoutes";
 import lineRouter from "./routes/lineRoutes";
 import playerRouter from "./routes/playerRoute";
+import rankRouter from "./routes/rankRoutes";
 import swaggerDocs from "./../swaggerConfig";
 
 function createServer() {
@@ -33,6 +34,7 @@ function createServer() {
   app.use(healthRouter);
   app.use(lineRouter);
   app.use(playerRouter);
+  app.use(rankRouter);
 
   return app;
 }
