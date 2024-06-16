@@ -24,6 +24,7 @@ class Player {
   }
 
   filterScoresByDate(dateRange: PlayedDateRange): Player {
+    
     const filteredScoreList = this.scores.filterScoresByDate(dateRange)
     return new Player(this.Id, this.name, filteredScoreList)
   }

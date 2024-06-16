@@ -23,8 +23,6 @@ class PlayerList {
     }, []);
     return [...new Set(dates)].map((a: PlayedDate) => a)
   }
-
-  fil
 }
 
 

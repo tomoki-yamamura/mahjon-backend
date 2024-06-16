@@ -4,7 +4,7 @@ import TYPES from "../config/inversity.types";
 import { ILineInteractor } from "../interface/ILineInteractor";
 import { constructLineInput } from "../interactors/dto/factory/input/lineInteractor";
 import { LineWebhookRequest } from "./input/lineController";
-import { sendScoreToPlayerInput } from "../interactors/input/lineInteractor";
+import { lineInteractorInput } from "../interactors/input/lineInteractor";
 
 @injectable()
 export class LineController {
@@ -19,7 +19,7 @@ export class LineController {
   ) {
     try {
       if (req.body.events[0].type === "postback") return res.status(201);
-      const input: sendScoreToPlayerInput = constructLineInput(req.body);
+      const input: lineInteractorInput = constructLineInput(req.body);
       await this.interactor.sendScoreToPlayer(input);
       return res.status(201).json({});
     } catch (error) {

@@ -1,13 +1,14 @@
+import PlayerList from "../collection/playerList";
 import Player from "../entities/player";
 
 class ReplyMessage {
-  private players: Player[]
-  constructor(players: Player[]) {
+  private players: PlayerList
+  constructor(players: PlayerList) {
     this.players = players
   }
 
   formatMessage(): string {
-    let message = this.players
+    let message = this.players.getPlayers()
       .map((player) => `${player.name}さん: ${player.totalScores().getPoint()}`)
       .reduce((acc, cur) => acc + cur + "\n", "");
 
