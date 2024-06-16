@@ -1,5 +1,6 @@
-import { LineWebhookRequest, sendScoreToPlayerInput } from '../../../interface/ILineInteractor';
+import { LineWebhookRequest } from '../../../controllers/input/lineController';
 import { dateMap, getEndOfToday } from '../../../utils/date';
+import { sendScoreToPlayerInput } from '../../input/lineInteractor';
 
 export function constructLineInput(req: LineWebhookRequest): sendScoreToPlayerInput {
   const text = req.events[0].message.text

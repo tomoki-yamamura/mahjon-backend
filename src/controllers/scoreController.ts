@@ -3,14 +3,13 @@ import { inject, injectable } from "inversify";
 import TYPES from "../config/inversity.types";
 import {
   ILineInteractor,
-  LineWebhookRequest,
   sendScoreToPlayerInput,
 } from "../interface/ILineInteractor";
-import { constructLineInput } from "../interactors/dto/factory/lineWebhook";
+import { constructLineInput } from "../interactors/dto/factory/lineInteractor";
 import { getScoresInputParams } from "./input/scoreController";
-import { constructGetScoreInput } from "../interactors/dto/factory/score";
+import { constructGetScoreInput } from "../interactors/dto/factory/scoreInteractor";
 import { IScoreInteractor,  } from "../interface/IScoreInteractor";
-import { getScoreInteractorInput } from "../interactors/input/score";
+import { getScoreInteractorInput } from "../interactors/input/scoreInteractor";
 
 @injectable()
 export class ScoreController {
@@ -25,15 +24,7 @@ export class ScoreController {
     next: NextFunction
   ) {
     try {
-      const startDate: string = req.query.startDate as string;
-      const endDate: string = req.query.endDate as string;
-      const mode: string = req.query.mode as string;
-      const input = {
-        startDate,
-        endDate,
-        mode
-      }
-      const interactorInput: getScoreInteractorInput  = constructGetScoreInput(input);
+      const interactorInput: getScoreInteractorInput  = constructGetScoreInput(req.query as getScoresInputParams);
       // await this.interactor.sendScoreToPlayer(input);
       return res.status(201).json({});
     } catch (error) {

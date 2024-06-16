@@ -10,7 +10,7 @@ import PlayedDate from "../domain/value/date";
 import { IMessageSender } from "../domain/interface/line/IMessageSender";
 import Player from "../domain/entities/player";
 import { IScoreInteractor } from "../interface/IScoreInteractor";
-import { getScoreInteractorInput } from "./input/score";
+import { getScoreInteractorInput } from "./input/scoreInteractor";
 import { constructGetScoreInteractorOuput, getScoreInteractorOuput } from "./output/score";
 import { score } from "../domain/value/__tests__/fixture";
 

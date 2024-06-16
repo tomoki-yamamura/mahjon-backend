@@ -1,13 +1,11 @@
 import { inject, injectable } from "inversify";
 import TYPES from "../config/inversity.types";
-import {
-  ILineInteractor,
-  sendScoreToPlayerInput,
-} from "../interface/ILineInteractor";
+import { ILineInteractor } from "../interface/ILineInteractor";
 import { IPlayerRepository } from "../domain/interface/repository/IPlayerRepository";
 import PlayMode from "../domain/value/mode";
 import PlayedDate from "../domain/value/date";
 import { IMessageSender } from "../domain/interface/line/IMessageSender";
+import { sendScoreToPlayerInput } from "./input/lineInteractor";
 
 @injectable()
 export class LineInteractor implements ILineInteractor {
