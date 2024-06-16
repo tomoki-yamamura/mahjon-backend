@@ -1,5 +1,5 @@
-import PlayerDTO from "../interactors/dto/player";
+import { PlayerOutput } from "../interactors/output/player";
 
 export interface IPlayerInteractor {
-  getAllPlayers(): Promise<PlayerDTO[]>;
+  getAllPlayers(): Promise<PlayerOutput[]>;
 }

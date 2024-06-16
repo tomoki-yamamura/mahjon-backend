@@ -1,6 +1,6 @@
-import { getScoresInputParams } from '../../../controllers/input/scoreController';
-import { parseStringToDate } from '../../../utils/date';
-import { getScoreInteractorInput } from '../../input/scoreInteractor';
+import { getScoresInputParams } from "../../../../controllers/input/scoreController"
+import { parseStringToDate } from "../../../../utils/date"
+import { getScoreInteractorInput } from "../../../input/scoreInteractor"
 
 export function constructGetScoreInput(req: getScoresInputParams): getScoreInteractorInput  {
   const input: getScoreInteractorInput = {

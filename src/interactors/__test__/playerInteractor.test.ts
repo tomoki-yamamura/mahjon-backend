@@ -3,7 +3,7 @@ import { IPlayerRepository } from "../../domain/interface/repository/IPlayerRepo
 import * as fixtureEntities from "../../domain/entities/__tests__/fixture/index";
 import Player from '../../domain/entities/player';
 import { PlayerInteractor } from '../playerInteractor';
-import { constructPlayerDTO } from '../dto/factory/playerTotalPoint';
+import { constructPlayerDTO } from '../dto/factory/input/playerTotalPoint';
 
 describe('PlayerInteractor', () => {
   let interactor: PlayerInteractor;

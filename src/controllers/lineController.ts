@@ -2,7 +2,7 @@ import express, { NextFunction } from "express";
 import { inject, injectable } from "inversify";
 import TYPES from "../config/inversity.types";
 import { ILineInteractor } from "../interface/ILineInteractor";
-import { constructLineInput } from "../interactors/dto/factory/lineInteractor";
+import { constructLineInput } from "../interactors/dto/factory/input/lineInteractor";
 import { LineWebhookRequest } from "./input/lineController";
 import { sendScoreToPlayerInput } from "../interactors/input/lineInteractor";
 

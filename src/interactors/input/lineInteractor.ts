@@ -1,4 +1,4 @@
-export type sendScoreToPlayerInput = {
+export type lineInteractorInput = {
   replyToken: string;
   userId: string;
   mode: string;

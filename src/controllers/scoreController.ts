@@ -1,14 +1,11 @@
 import express, { NextFunction } from "express";
 import { inject, injectable } from "inversify";
 import TYPES from "../config/inversity.types";
-import {
-  ILineInteractor,
-  sendScoreToPlayerInput,
-} from "../interface/ILineInteractor";
-import { constructLineInput } from "../interactors/dto/factory/lineInteractor";
+import { ILineInteractor } from "../interface/ILineInteractor";
+import { constructLineInput } from "../interactors/dto/factory/input/lineInteractor";
 import { getScoresInputParams } from "./input/scoreController";
-import { constructGetScoreInput } from "../interactors/dto/factory/scoreInteractor";
-import { IScoreInteractor,  } from "../interface/IScoreInteractor";
+import { constructGetScoreInput } from "../interactors/dto/factory/input/scoreInteractor";
+import { IScoreInteractor } from "../interface/IScoreInteractor";
 import { getScoreInteractorInput } from "../interactors/input/scoreInteractor";
 
 @injectable()
@@ -24,8 +21,10 @@ export class ScoreController {
     next: NextFunction
   ) {
     try {
-      const interactorInput: getScoreInteractorInput  = constructGetScoreInput(req.query as getScoresInputParams);
-      // await this.interactor.sendScoreToPlayer(input);
+      const interactorInput: getScoreInteractorInput = constructGetScoreInput(
+        req.query as getScoresInputParams
+      );
+      // await this.interactor.(input);
       return res.status(201).json({});
     } catch (error) {
       console.error(error);

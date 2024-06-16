@@ -6,8 +6,9 @@ import Point from "../../../domain/value/point";
 import PlayedDate from "../../../domain/value/date";
 import PlayMode from "../../../domain/value/mode";
 import ScoreList from "../../../domain/collection/scoreList";
+import PlayerList from "../../../domain/collection/playerList";
 
-export function reconstructPlayers(scoreModels: IScore[]): Player[] {
+export function reconstructPlayers(scoreModels: IScore[]): PlayerList {
   const playerMap: { [key: string]: { name: string, scores: Score[] } } = {};
 
   scoreModels.forEach((scoreModel) => {
@@ -25,9 +26,11 @@ export function reconstructPlayers(scoreModels: IScore[]): Player[] {
     playerMap[playerId].scores.push(score);
   });
 
-  return Object.keys(playerMap).map((playerId) => {
+  const players = Object.keys(playerMap).map((playerId) => {
     const { name, scores } = playerMap[playerId];
     const scoreList = new ScoreList(scores);
     return new Player(playerId, name, scoreList);
   });
+
+  return new PlayerList(players)
 }

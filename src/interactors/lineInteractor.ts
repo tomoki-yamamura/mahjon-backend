@@ -29,11 +29,13 @@ export class LineInteractor implements ILineInteractor {
     const vmode = new PlayMode(mode);
     const vstartDate = new PlayedDate(startDate);
     const vendDate = new PlayedDate(endDate);
-    const players = await this.repository.getPlayersByModeAndDate(
-      vmode,
-      vstartDate,
-      vendDate
-    );
+    const players = await this.repository.getAllPlayers();
+    // const players = await this.repository.getPlayersByModeAndDate(
+    //   vmode,
+    //   vstartDate,
+    //   vendDate
+    // );
+    const filteredPlayersScore = players
     await this.messageSender.replyMessage(replyToken, players);
   }
 }

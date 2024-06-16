@@ -12,6 +12,10 @@ class PlayerList {
     this.players = players
   }
 
+  getPlayers(): Player[] {
+    return [...this.players]
+  }
+
   getPlayedDates(): PlayedDate[] {
     const dates: PlayedDate[] = this.players.reduce((acc: PlayedDate[], player: Player) => {
       const playerDates = player.scores.getScores().map((score) => score.date);
@@ -19,6 +23,8 @@ class PlayerList {
     }, []);
     return [...new Set(dates)].map((a: PlayedDate) => a)
   }
+
+  fil
 }
 
 

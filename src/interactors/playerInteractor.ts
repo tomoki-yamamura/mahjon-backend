@@ -1,8 +1,9 @@
 import { inject, injectable } from "inversify";
 import TYPES from "../config/inversity.types";
 import { IPlayerInteractor } from "../interface/IPlayerInteractor";
-import PlayerDTO from "./dto/player";
 import { IPlayerRepository } from "../domain/interface/repository/IPlayerRepository";
+import { constructPlayerOutput } from "./dto/factory/output/player";
+import { PlayerOutput } from "./output/player";
 
 @injectable()
 export class PlayerInteractor implements IPlayerInteractor {
@@ -10,9 +11,8 @@ export class PlayerInteractor implements IPlayerInteractor {
   constructor(@inject(TYPES.PlayerRepository) repository: IPlayerRepository) {
     this.repository = repository;
   }
-  async getAllPlayers(): Promise<PlayerDTO[]> {
+  async getAllPlayers(): Promise<PlayerOutput[]> {
     const players = await this.repository.getAllPlayers()
-    const playerDTOs = players.map((player) => new PlayerDTO(player)); 
-    return playerDTOs
+    return constructPlayerOutput(players)
   }
 }
