@@ -1,10 +1,9 @@
-// Mock dependencies
-
-import ScoreList from "../../collection/scoreList";
 import PlayMode from "../../value/mode";
 import Point from "../../value/point";
 import Player from "../player";
 import { fixDate, oneSecLaterDate } from "../../value/__tests__/fixture/date";
+import ScoreList from "../../collection/scoreList";
+import PlayedDateRange from "../../value/dateRange";
 
 describe('Player', () => {
   let mockScoreList: jest.Mocked<ScoreList>;
@@ -33,14 +32,15 @@ describe('Player', () => {
   test('filterScoresByDate should return a new Player instance with filtered scores', () => {
     const startDate = fixDate
     const endDate = oneSecLaterDate
+    const dateRange = new PlayedDateRange(startDate, endDate)
     const filteredScoreList = new ScoreList([]);
     mockScoreList.filterScoresByDate.mockReturnValue(filteredScoreList);
 
-    const filteredPlayer = player.filterScoresByDate(startDate, endDate);
+    const filteredPlayer = player.filterScoresByDate(dateRange);
 
     expect(filteredPlayer).not.toBe(player);
     expect(filteredPlayer.scores).toBe(filteredScoreList);
-    expect(mockScoreList.filterScoresByDate).toHaveBeenCalledWith(startDate, endDate);
+    expect(mockScoreList.filterScoresByDate).toHaveBeenCalledWith(dateRange);
   });
 
   test('filterScoresByMode should return a new Player instance with filtered scores', () => {

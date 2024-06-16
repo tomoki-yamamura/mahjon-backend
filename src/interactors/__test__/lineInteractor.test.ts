@@ -2,10 +2,11 @@ import 'reflect-metadata';
 import { IMessageSender } from "../../domain/interface/line/IMessageSender";
 import { IPlayerRepository } from "../../domain/interface/repository/IPlayerRepository";
 import * as fixtureEntities from "../../domain/entities/__tests__/fixture/index";
+import * as fixtureValues from "../../domain/value/__tests__/fixture/index";
 import { LineInteractor } from "../lineInteractor";
-import Player from '../../domain/entities/player';
 import PlayedDate from '../../domain/value/date';
 import PlayMode from '../../domain/value/mode';
+import PlayerList from '../../domain/collection/playerList';
 
 describe('LineInteractor', () => {
   let interactor: LineInteractor;
@@ -36,20 +37,20 @@ describe('LineInteractor', () => {
       replyToken: 'dummyReplyToken',
       userId: 'dummyUserId',
       mode: '3players',
-      startDate: new Date(),
-      endDate: new Date(),
+      startDate: fixtureValues.fixDate.getDate(),
+      endDate: fixtureValues.fixDate.getDate(),
     }
-    const dummyPlayers: Player[] = [fixtureEntities.player]
+    const dummyPlayers: PlayerList = new PlayerList([fixtureEntities.player])
 
-    playerRepositoryMock.getPlayersByModeAndDate.mockResolvedValue(dummyPlayers);
+    playerRepositoryMock.getAllPlayers.mockResolvedValue(dummyPlayers);
     
     await interactor.sendScoreToPlayer(input);
 
     const vmode = new PlayMode(input.mode);
     const vstartDate = new PlayedDate(input.startDate);
     const vendDate = new PlayedDate(input.endDate);
-    
-    expect(playerRepositoryMock.getPlayersByModeAndDate).toHaveBeenCalledWith(vmode, vstartDate, vendDate);
+
+    expect(playerRepositoryMock.getAllPlayers).toHaveBeenCalled();
     expect(messageSenderMock.replyMessage).toHaveBeenCalledWith(input.replyToken, dummyPlayers);
   });
 });

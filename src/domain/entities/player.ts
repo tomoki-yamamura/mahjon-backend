@@ -1,7 +1,9 @@
 import ScoreList from "../collection/scoreList";
 import PlayedDate from "../value/date";
+import PlayedDateRange from "../value/dateRange";
 import PlayMode from "../value/mode";
 import Point from "../value/point";
+import Score from "../value/score";
 
 class Player {
   readonly Id: string;
@@ -17,8 +19,13 @@ class Player {
     return this.scores.totalScorePoint()
   }
 
-  filterScoresByDate(startDate: PlayedDate, endDate: PlayedDate): Player {
-    const filteredScoreList = this.scores.filterScoresByDate(startDate, endDate)
+  getScoreByDate(date: PlayedDate): Score {
+    return this.scores.getScoreByDate(date)
+  }
+
+  filterScoresByDate(dateRange: PlayedDateRange): Player {
+    
+    const filteredScoreList = this.scores.filterScoresByDate(dateRange)
     return new Player(this.Id, this.name, filteredScoreList)
   }
 

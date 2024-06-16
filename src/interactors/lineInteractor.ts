@@ -1,13 +1,13 @@
 import { inject, injectable } from "inversify";
 import TYPES from "../config/inversity.types";
-import {
-  ILineInteractor,
-  sendScoreToPlayerInput,
-} from "../interface/ILineInteractor";
+import { ILineInteractor } from "../interface/ILineInteractor";
 import { IPlayerRepository } from "../domain/interface/repository/IPlayerRepository";
 import PlayMode from "../domain/value/mode";
 import PlayedDate from "../domain/value/date";
 import { IMessageSender } from "../domain/interface/line/IMessageSender";
+import { lineInteractorInput } from "./input/lineInteractor";
+import PlayedDateRange from "../domain/value/dateRange";
+import PlayerList from "../domain/collection/playerList";
 
 @injectable()
 export class LineInteractor implements ILineInteractor {
@@ -26,16 +26,23 @@ export class LineInteractor implements ILineInteractor {
     mode,
     startDate,
     endDate,
-  }: sendScoreToPlayerInput): Promise<void> {
+  }: lineInteractorInput): Promise<void> {
     await this.messageSender.showLoadingAnimation(userId, 5);
     const vmode = new PlayMode(mode);
     const vstartDate = new PlayedDate(startDate);
     const vendDate = new PlayedDate(endDate);
-    const players = await this.repository.getPlayersByModeAndDate(
-      vmode,
-      vstartDate,
-      vendDate
+    const vdateRange = new PlayedDateRange(vstartDate, vendDate);
+    const players = await this.repository.getAllPlayers();
+    
+    const filteredPlayersScore = players
+      .getPlayers()
+      .map((player) =>
+        player.filterScoresByDate(vdateRange).filterScoresByMode(vmode)
+      );
+    
+    await this.messageSender.replyMessage(
+      replyToken,
+      new PlayerList(filteredPlayersScore)
     );
-    await this.messageSender.replyMessage(replyToken, players);
   }
 }

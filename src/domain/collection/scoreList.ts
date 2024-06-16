@@ -2,6 +2,7 @@ import Score from "../value/score";
 import PlayedDate from "../value/date";
 import Point from "../value/point";
 import PlayMode from "../value/mode";
+import PlayedDateRange from "../value/dateRange";
 
 class ScoreList {
   private scores: Score[];
@@ -23,9 +24,17 @@ class ScoreList {
     return [...this.scores]
   }
 
-  filterScoresByDate(startDate: PlayedDate, endDate: PlayedDate): ScoreList {
+  hasScoreDate(date: PlayedDate): boolean {
+    return this.scores.some((score) => score.date.isEqualTo(date))
+  }
+
+  getScoreByDate(date: PlayedDate): Score {
+    return this.scores.filter((score) => score.date.isEqualTo(date))[0]
+  }
+
+  filterScoresByDate(dateRange: PlayedDateRange): ScoreList {
     const newScores = this.scores.filter((score) => {
-      return score.date.isAfter(startDate) && score.date.isBefore(endDate)
+      return dateRange.isWithinRange(score.date);
     })
     return new ScoreList(newScores)
   }

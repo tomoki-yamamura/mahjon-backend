@@ -3,7 +3,8 @@ import { IPlayerRepository } from "../../domain/interface/repository/IPlayerRepo
 import * as fixtureEntities from "../../domain/entities/__tests__/fixture/index";
 import Player from '../../domain/entities/player';
 import { PlayerInteractor } from '../playerInteractor';
-import { constructPlayerDTO } from '../dto/factory/playerTotalPoint';
+import { constructPlayerDTO } from '../dto/factory/input/playerTotalPoint';
+import PlayerList from '../../domain/collection/playerList';
 
 describe('PlayerInteractor', () => {
   let interactor: PlayerInteractor;
@@ -25,7 +26,7 @@ describe('PlayerInteractor', () => {
 
   it('getAllPlayers should be called', async () => {
     const players: Player[] = [fixtureEntities.player]
-    playerRepositoryMock.getAllPlayers.mockResolvedValue(players);
+    playerRepositoryMock.getAllPlayers.mockResolvedValue(new PlayerList(players));
     const result = await interactor.getAllPlayers();
     expect(playerRepositoryMock.getAllPlayers).toHaveBeenCalled()
     expect(result).toEqual([constructPlayerDTO(fixtureEntities.player)])

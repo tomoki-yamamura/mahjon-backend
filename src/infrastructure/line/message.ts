@@ -5,6 +5,7 @@ import Player from "../../domain/entities/player";
 import { messagingApi } from "@line/bot-sdk";
 import ReplyMessage from "../../domain/service/replyMessage";
 import { ShowLoadingAnimationRequest } from "@line/bot-sdk/dist/messaging-api/model/models";
+import PlayerList from "../../domain/collection/playerList";
 
 @injectable()
 export class LineMessageSender implements IMessageSender {
@@ -21,7 +22,7 @@ export class LineMessageSender implements IMessageSender {
     }
    await  this.lineClient.showLoadingAnimation(input)
   }
-  async replyMessage(replyToken: string, players: Player[]): Promise<void> {
+  async replyMessage(replyToken: string, players: PlayerList): Promise<void> {
     const replyMessage = new ReplyMessage(players)
     const message = replyMessage.formatMessage()
     await this.lineClient.replyMessage({

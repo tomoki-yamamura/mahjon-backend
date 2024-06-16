@@ -7,6 +7,8 @@ import { reconstructPlayers } from "./factory/player";
 import { IScore } from "./db/model/score";
 import PlayedDate from "../../domain/value/date";
 import PlayMode from "../../domain/value/mode";
+import PlayerList from "../../domain/collection/playerList";
+import PlayedDateRange from "../../domain/value/dateRange";
 
 @injectable()
 export class PlayerRepository implements IPlayerRepository {
@@ -14,7 +16,7 @@ export class PlayerRepository implements IPlayerRepository {
   constructor(@inject(TYPES.ScoreModel) scoreModel: Model<IScore>) {
     this.scoreModel = scoreModel;
   }
-  async getAllPlayers(): Promise<Player[]> {
+  async getAllPlayers(): Promise<PlayerList> {
     const scores = await this.scoreModel
       .find()
       .populate("playerId", "name")
@@ -22,22 +24,21 @@ export class PlayerRepository implements IPlayerRepository {
     const players = reconstructPlayers(scores);
     return players;
   }
-  async getPlayersByModeAndDate(
-    mode: PlayMode,
-    startDate: PlayedDate,
-    endDate: PlayedDate
-  ): Promise<Player[]> {
-    const scores = await this.scoreModel
-      .find({
-        mode: mode.getMode(),
-        date: {
-          $gte: startDate.getDate(),
-          $lte: endDate.getDate(),
-        },
-      })
-      .populate("playerId", "name")
-      .exec();
-    const players = reconstructPlayers(scores);
-    return players;
-  }
+  // async getPlayersByModeAndDate(
+  //   mode: PlayMode,
+  //   dateRange: PlayedDateRange
+  // ): Promise<PlayerList> {
+  //   const scores = await this.scoreModel
+  //     .find({
+  //       mode: mode.getMode(),
+  //       date: {
+  //         $gte: startDate.getDate(),
+  //         $lte: endDate.getDate(),
+  //       },
+  //     })
+  //     .populate("playerId", "name")
+  //     .exec();
+  //   const players = reconstructPlayers(scores);
+  //   return players;
+  // }
 }

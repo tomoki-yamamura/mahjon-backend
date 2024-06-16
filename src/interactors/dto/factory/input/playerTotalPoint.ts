@@ -1,10 +1,10 @@
-import ScoreList from "../../../domain/collection/scoreList";
-import Player from "../../../domain/entities/player";
-import PlayedDate from "../../../domain/value/date";
-import PlayMode from "../../../domain/value/mode";
-import Point from "../../../domain/value/point";
-import Score from "../../../domain/value/score";
-import PlayerDTO from "../player";
+import ScoreList from "../../../../domain/collection/scoreList";
+import Player from "../../../../domain/entities/player";
+import PlayedDate from "../../../../domain/value/date";
+import PlayMode from "../../../../domain/value/mode";
+import Point from "../../../../domain/value/point";
+import Score from "../../../../domain/value/score";
+import PlayerDTO from "../../player";
 
 
 export function constructPlayerDTO(player: Player): PlayerDTO {
