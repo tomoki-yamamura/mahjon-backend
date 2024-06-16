@@ -29,10 +29,8 @@ class RankService {
     const playerList = new PlayerList(filteredPlayers)
     const playedDates = playerList.getPlayedDates()
     const ranks = playedDates.map((date) => {
-      const playersWith = filteredPlayers.filter((player) =>
-        player.scores.some((score) => score.date.isEqualTo(date))
-      );
-      const calculateRank = this.calculateRank(playersWith, date)
+      const playersSameDate = filteredPlayers.filter((player) => player.scores.hasScoreDate(date));
+      const calculateRank = this.calculateRank(playersSameDate, date)
       const index = calculateRank.findIndex(([p, _]) => p.Id === player.Id);
       const position = index + 1
       const rank: Rank = {

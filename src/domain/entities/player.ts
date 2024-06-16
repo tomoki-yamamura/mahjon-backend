@@ -1,3 +1,4 @@
+import ScoreList from "../collection/scoreList";
 import PlayedDate from "../value/date";
 import PlayedDateRange from "../value/dateRange";
 import PlayMode from "../value/mode";
@@ -7,28 +8,28 @@ import Score from "../value/score";
 class Player {
   readonly Id: string;
   readonly name: string;
-  readonly scores: Score[];
-  constructor(id: string, name: string, scores: Score[]) {
+  readonly scores: ScoreList;
+  constructor(id: string, name: string, scores: ScoreList) {
     this.Id = id
     this.name = name
     this.scores = scores
   }
   
   totalScores(): Point {
-    return this.scores.reduce((acc, cur) => acc.add(cur.point), new Point(0))
+    return this.scores.totalScorePoint()
   }
 
   getScoreByDate(date: PlayedDate): Score {
-    return this.scores.filter((score) => score.date.isEqualTo(date))[0]
+    return this.scores.getScoreByDate(date)
   }
 
   filterScoresByDate(dateRange: PlayedDateRange): Player {
-    const filteredScoreList = this.scores.filter((score) => dateRange.isWithinRange(score.date))
+    const filteredScoreList = this.scores.filterScoresByDate(dateRange)
     return new Player(this.Id, this.name, filteredScoreList)
   }
 
   filterScoresByMode(mode: PlayMode): Player {
-    const filteredScoreList = this.scores.filter((score) => score.mode.isEqualTo(mode))
+    const filteredScoreList = this.scores.filterScoresByMode(mode)
     return new Player(this.Id, this.name, filteredScoreList)
   }
 }

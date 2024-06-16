@@ -1,4 +1,5 @@
 import PlayerList from "../../collection/playerList";
+import ScoreList from "../../collection/scoreList";
 import { player } from "../../entities/__tests__/fixture";
 import Player from "../../entities/player";
 import * as fixtureValue from "../../value/__tests__/fixture/index"
@@ -10,13 +11,13 @@ import RankService, { Rank } from "../rankService";
 describe('getPlayerRank for 3players', () => {
   const scores1 = new Score(fixtureValue.fixDate, new Point(-50), fixtureValue.mode3players)
   const scores2 = new Score(fixtureValue.oneSecLaterDate, new Point(50), fixtureValue.mode3players)
-  const playerA = new Player("1", "playerA", [scores1, scores2])
+  const playerA = new Player("1", "playerA", new ScoreList([scores1, scores2]))
   const scores3 = new Score(fixtureValue.fixDate, new Point(0), fixtureValue.mode3players)
   const scores4 = new Score(fixtureValue.oneSecLaterDate, new Point(-50), fixtureValue.mode3players)
-  const playerB = new Player("2", "playerB", [scores3, scores4])
+  const playerB = new Player("2", "playerB", new ScoreList([scores3, scores4]))
   const scores5 = new Score(fixtureValue.fixDate, new Point(50), fixtureValue.mode3players)
   const scores6 = new Score(fixtureValue.oneSecLaterDate, new Point(0), fixtureValue.mode3players)
-  const playerC = new Player("3", "playerC", [scores5, scores6])
+  const playerC = new Player("3", "playerC", new ScoreList([scores5, scores6]))
   const dateRange = new PlayedDateRange(fixtureValue.fixDate, fixtureValue.oneSecLaterDate)
 
   const playerList = [playerA, playerB, playerC]
@@ -67,16 +68,16 @@ describe('getPlayerRank for 3players', () => {
 describe('getPlayerRank for 4players', () => {
   const scores1 = new Score(fixtureValue.fixDate, new Point(-20), fixtureValue.mode3players)
   const scores2 = new Score(fixtureValue.oneSecLaterDate, new Point(20), fixtureValue.mode3players)
-  const playerA = new Player("1", "playerA", [scores1, scores2])
+  const playerA = new Player("1", "playerA", new ScoreList([scores1, scores2]))
   const scores3 = new Score(fixtureValue.fixDate, new Point(-1), fixtureValue.mode3players)
   const scores4 = new Score(fixtureValue.oneSecLaterDate, new Point(30), fixtureValue.mode3players)
-  const playerB = new Player("2", "playerB", [scores3, scores4])
+  const playerB = new Player("2", "playerB", new ScoreList([scores3, scores4]))
   const scores5 = new Score(fixtureValue.fixDate, new Point(1), fixtureValue.mode3players)
   const scores6 = new Score(fixtureValue.oneSecLaterDate, new Point(-30), fixtureValue.mode3players)
-  const playerC = new Player("3", "playerC", [scores5, scores6])
+  const playerC = new Player("3", "playerC", new ScoreList([scores5, scores6]))
   const scores7 = new Score(fixtureValue.fixDate, new Point(20), fixtureValue.mode3players)
   const scores8 = new Score(fixtureValue.oneSecLaterDate, new Point(-20), fixtureValue.mode3players)
-  const playerD = new Player("4", "playerD", [scores7, scores8])
+  const playerD = new Player("4", "playerD", new ScoreList([scores7, scores8]))
   const dateRange = new PlayedDateRange(fixtureValue.fixDate, fixtureValue.oneSecLaterDate)
 
   const playerList = [playerA, playerB, playerC, playerD]
