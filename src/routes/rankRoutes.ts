@@ -38,6 +38,6 @@ const router = express.Router();
 
 const controller = container.get<RankController>(TYPES.RankController);
 
-router.post("/ranks", controller.getRanksByModeAndDate.bind(controller));
+router.get("/ranks", controller.getRanksByModeAndDate.bind(controller));
 
 export default router;
