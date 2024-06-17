@@ -1,11 +1,14 @@
-import Score from "../../value/score";
-import ScoreList from "../scoreList";
-import { point1, point2 } from "../../value/__tests__/fixture/point";
-import { fixDate, oneSecLaterDate, oneSecBeforeDate } from "../../value/__tests__/fixture/date";
-import { mode3players } from "../../value/__tests__/fixture/mode";
-import Player from "../../entities/player";
-import PlayerList from "../playerList";
-
+import Score from '../../value/score'
+import ScoreList from '../scoreList'
+import { point1, point2 } from '../../value/__tests__/fixture/point'
+import {
+  fixDate,
+  oneSecLaterDate,
+  oneSecBeforeDate,
+} from '../../value/__tests__/fixture/date'
+import { mode3players } from '../../value/__tests__/fixture/mode'
+import Player from '../../entities/player'
+import PlayerList from '../playerList'
 
 describe('PlayerList', () => {
   const score1 = new Score(fixDate, point1, mode3players)
@@ -18,14 +21,14 @@ describe('PlayerList', () => {
   const score6 = new Score(fixDate, point1, mode3players)
   const scoreList3 = new ScoreList([score5, score6])
 
-  const playerA = new Player("1", "playerA", scoreList1)
-  const playerB = new Player("2", "playerB", scoreList2)
-  const playerC = new Player("3", "playerC", scoreList3)
+  const playerA = new Player('1', 'playerA', scoreList1)
+  const playerB = new Player('2', 'playerB', scoreList2)
+  const playerC = new Player('3', 'playerC', scoreList3)
 
   const playerList = new PlayerList([playerA, playerB, playerC])
-  
+
   test('should return unique getPlayedDates', () => {
     const expected = [oneSecBeforeDate, fixDate, oneSecLaterDate]
-    expect(playerList.getPlayedDates()).toEqual(expected);
-  });
-});
+    expect(playerList.getPlayedDates()).toEqual(expected)
+  })
+})

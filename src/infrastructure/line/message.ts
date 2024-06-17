@@ -1,25 +1,28 @@
-import { inject, injectable } from "inversify";
-import TYPES from "../../config/inversity.types";
-import { IMessageSender } from "../../domain/interface/line/IMessageSender";
-import { messagingApi } from "@line/bot-sdk";
-import ReplyMessage from "../../domain/service/replyMessage";
-import { ShowLoadingAnimationRequest } from "@line/bot-sdk/dist/messaging-api/model/models";
-import PlayerList from "../../domain/collection/playerList";
+import { inject, injectable } from 'inversify'
+import TYPES from '../../config/inversity.types'
+import { IMessageSender } from '../../domain/interface/line/IMessageSender'
+import { messagingApi } from '@line/bot-sdk'
+import ReplyMessage from '../../domain/service/replyMessage'
+import { ShowLoadingAnimationRequest } from '@line/bot-sdk/dist/messaging-api/model/models'
+import PlayerList from '../../domain/collection/playerList'
 
 @injectable()
 export class LineMessageSender implements IMessageSender {
-  private lineClient: messagingApi.MessagingApiClient;
+  private lineClient: messagingApi.MessagingApiClient
   constructor(
-    @inject(TYPES.LineClient) client: messagingApi.MessagingApiClient
+    @inject(TYPES.LineClient) client: messagingApi.MessagingApiClient,
   ) {
-    this.lineClient = client;
+    this.lineClient = client
   }
-  async showLoadingAnimation(replyToken: string, second: number): Promise<void> {
+  async showLoadingAnimation(
+    replyToken: string,
+    second: number,
+  ): Promise<void> {
     const input: ShowLoadingAnimationRequest = {
       chatId: replyToken,
-      loadingSeconds: second
+      loadingSeconds: second,
     }
-   await  this.lineClient.showLoadingAnimation(input)
+    await this.lineClient.showLoadingAnimation(input)
   }
   async replyMessage(replyToken: string, players: PlayerList): Promise<void> {
     const replyMessage = new ReplyMessage(players)
@@ -28,10 +31,10 @@ export class LineMessageSender implements IMessageSender {
       replyToken: replyToken,
       messages: [
         {
-          type: "text",
+          type: 'text',
           text: message,
         },
       ],
-    });
+    })
   }
 }

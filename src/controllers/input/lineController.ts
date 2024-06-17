@@ -1,27 +1,33 @@
-type richMenuText = "Today 3players" | "Weekly 3players" | "Monthly 3players" | "Today 4players" | "Weekly 4players" | "Monthly 4players"
+type richMenuText =
+  | 'Today 3players'
+  | 'Weekly 3players'
+  | 'Monthly 3players'
+  | 'Today 4players'
+  | 'Weekly 4players'
+  | 'Monthly 4players'
 
 interface LineWebhookEvent {
-  type: string;
+  type: string
   message: {
-    type: string;
-    id: string;
-    quoteToken: string;
+    type: string
+    id: string
+    quoteToken: string
     text: richMenuText
-  };
-  webhookEventId: string;
+  }
+  webhookEventId: string
   deliveryContext: {
-    isRedelivery: boolean;
-  };
-  timestamp: number;
+    isRedelivery: boolean
+  }
+  timestamp: number
   source: {
-    type: string;
-    userId: string;
-  };
-  replyToken: string;
-  mode: string;
+    type: string
+    userId: string
+  }
+  replyToken: string
+  mode: string
 }
 
 export interface LineWebhookRequest {
-  destination: string;
-  events: LineWebhookEvent[];
+  destination: string
+  events: LineWebhookEvent[]
 }

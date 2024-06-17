@@ -9,7 +9,7 @@ class PlayedDate {
   }
 
   isEqualTo(otherDate: PlayedDate): boolean {
-    return this.date.toISOString() === otherDate.getDate().toISOString();
+    return this.date.toISOString() === otherDate.getDate().toISOString()
   }
 
   isAfter(otherDate: PlayedDate): boolean {

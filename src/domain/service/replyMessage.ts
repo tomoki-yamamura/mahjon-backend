@@ -1,4 +1,4 @@
-import PlayerList from "../collection/playerList";
+import PlayerList from '../collection/playerList'
 
 class ReplyMessage {
   private players: PlayerList
@@ -7,15 +7,16 @@ class ReplyMessage {
   }
 
   formatMessage(): string {
-    let message = this.players.getPlayers()
-      .map((player) => `${player.name}さん: ${player.totalScores().getPoint()}`)
-      .reduce((acc, cur) => acc + cur + "\n", "");
+    let message = this.players
+      .getPlayers()
+      .map(player => `${player.name}さん: ${player.totalScores().getPoint()}`)
+      .reduce((acc, cur) => acc + cur + '\n', '')
 
     if (!message.trim()) {
-      message = "成績がありません。";
+      message = '成績がありません。'
     }
 
-    return message;
+    return message
   }
 }
 

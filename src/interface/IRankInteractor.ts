@@ -1,5 +1,5 @@
-import { getRankInteractorInput } from "../interactors/input/rankInteractor";
+import { getRankInteractorInput } from '../interactors/input/rankInteractor'
 
 export interface IRankInteractor {
-  getRanksByModeAndDate(input: getRankInteractorInput): Promise<any>;
+  getRanksByModeAndDate(input: getRankInteractorInput): Promise<any>
 }

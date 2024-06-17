@@ -1,36 +1,36 @@
-import mongoose, { Model, Schema } from "mongoose";
-import { IPlayer } from "./player";
+import mongoose, { Model, Schema } from 'mongoose'
+import { IPlayer } from './player'
 
-export type mode = "3players" | "4players"
+export type mode = '3players' | '4players'
 export interface IScore {
-  playerId: Schema.Types.ObjectId | IPlayer;
-  point: number;
-  date: Date;
-  mode: mode;
+  playerId: Schema.Types.ObjectId | IPlayer
+  point: number
+  date: Date
+  mode: mode
 }
 
 const scoreSchema = new Schema<IScore>({
   playerId: {
     type: Schema.Types.ObjectId,
-    ref: "Player",
+    ref: 'Player',
     required: true,
   },
   point: {
-    type: "Number",
+    type: 'Number',
     required: true,
   },
   date: {
-    type: "Date",
+    type: 'Date',
     required: true,
   },
   mode: {
-    type: "String",
-    enum: ["3players", "4players"],
+    type: 'String',
+    enum: ['3players', '4players'],
     required: true,
   },
-});
+})
 
 export const ScoreModel: Model<IScore> = mongoose.model<IScore>(
-  "Score",
-  scoreSchema
-);
+  'Score',
+  scoreSchema,
+)

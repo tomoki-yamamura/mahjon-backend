@@ -1,10 +1,10 @@
-import PlayedDate from "./date";
-import PlayMode from "./mode";
-import Point from "./point";
+import PlayedDate from './date'
+import PlayMode from './mode'
+import Point from './point'
 
 class Score {
-  readonly date: PlayedDate;
-  readonly point: Point;
+  readonly date: PlayedDate
+  readonly point: Point
   readonly mode: PlayMode
   constructor(date: PlayedDate, point: Point, mode: PlayMode) {
     this.date = date

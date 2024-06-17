@@ -1,3 +1,3 @@
-import scoreList from "./scoreList"
+import scoreList from './scoreList'
 
 export { scoreList }

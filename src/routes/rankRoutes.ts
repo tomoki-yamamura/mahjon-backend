@@ -1,7 +1,7 @@
-import express from "express";
-import TYPES from "../config/inversity.types";
-import container from "../config/inversity.config";
-import { RankController } from "../controllers/rankController";
+import express from 'express'
+import TYPES from '../config/inversity.types'
+import container from '../config/inversity.config'
+import { RankController } from '../controllers/rankController'
 
 /**
  * @swagger
@@ -34,10 +34,10 @@ import { RankController } from "../controllers/rankController";
  *         description: Server error
  */
 
-const router = express.Router();
+const router = express.Router()
 
-const controller = container.get<RankController>(TYPES.RankController);
+const controller = container.get<RankController>(TYPES.RankController)
 
-router.get("/ranks", controller.getRanksByModeAndDate.bind(controller));
+router.get('/ranks', controller.getRanksByModeAndDate.bind(controller))
 
-export default router;
+export default router

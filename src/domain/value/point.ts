@@ -9,11 +9,11 @@ class Point {
   }
 
   isEqualTo(other: Point): boolean {
-    return this.point === other.getPoint();
+    return this.point === other.getPoint()
   }
 
   add(other: Point): Point {
-    return new Point(this.point + other.getPoint());
+    return new Point(this.point + other.getPoint())
   }
 }
 

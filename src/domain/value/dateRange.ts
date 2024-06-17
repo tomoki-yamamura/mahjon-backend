@@ -1,15 +1,15 @@
-import PlayedDate from "./date";
+import PlayedDate from './date'
 
 class PlayedDateRange {
-  private startDate: PlayedDate;
-  private endDate: PlayedDate;
+  private startDate: PlayedDate
+  private endDate: PlayedDate
   constructor(startDate: PlayedDate, endDate: PlayedDate) {
-    this.startDate = startDate;
-    this.endDate = endDate;
+    this.startDate = startDate
+    this.endDate = endDate
   }
 
   getDate(): [PlayedDate, PlayedDate] {
-    return [this.startDate, this.endDate];
+    return [this.startDate, this.endDate]
   }
 
   isEqualTo(otherDate: PlayedDate): boolean {
@@ -17,24 +17,24 @@ class PlayedDateRange {
       this.startDate.getDate().toISOString() ===
         otherDate.getDate().toISOString() ||
       this.endDate.getDate().toISOString() === otherDate.getDate().toISOString()
-    );
+    )
   }
 
   isAfter(otherDate: PlayedDate): boolean {
-    return this.startDate.getDate() <= otherDate.getDate();
+    return this.startDate.getDate() <= otherDate.getDate()
   }
 
   isBefore(otherDate: PlayedDate): boolean {
-    return otherDate.getDate() <= this.endDate.getDate();
+    return otherDate.getDate() <= this.endDate.getDate()
   }
 
   isWithinRange(otherDate: PlayedDate): boolean {
-    const otherDateValue = otherDate.getDate();
+    const otherDateValue = otherDate.getDate()
     return (
       this.startDate.getDate() <= otherDateValue &&
       otherDateValue <= this.endDate.getDate()
-    );
+    )
   }
 }
 
-export default PlayedDateRange;
+export default PlayedDateRange

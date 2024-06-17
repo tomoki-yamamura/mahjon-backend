@@ -16,11 +16,11 @@ export class RankController {
   async getRanksByModeAndDate(
     req: express.Request<getRankInputParams>,
     res: express.Response,
-    next: NextFunction
+    next: NextFunction,
   ) {
     try {
       const interactorInput: getRankInteractorInput = constructGetRankInput(
-        req.query as getRankInputParams
+        req.query as getRankInputParams,
       )
       const data = await this.interactor.getRanksByModeAndDate(interactorInput)
       return res.status(200).json(data)

@@ -1,5 +1,5 @@
 export type ScoreOutput = {
-  date: Date,
-  point: number,
+  date: Date
+  point: number
   mode: string
 }

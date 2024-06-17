@@ -1,7 +1,7 @@
-import { ScoreOutput } from "./score";
+import { ScoreOutput } from './score'
 
 export type PlayerOutput = {
-  readonly Id: string;
-  readonly name: string;
-  readonly scores: ScoreOutput[];
+  readonly Id: string
+  readonly name: string
+  readonly scores: ScoreOutput[]
 }
