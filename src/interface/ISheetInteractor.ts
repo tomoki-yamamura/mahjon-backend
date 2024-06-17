@@ -1,11 +1,6 @@
-import { Sheet } from '../interactors/dto/sheet'
-
-type params = {
-  id: string
-  startDate: string
-  endDate: string
-}
+import { getSheetInteractorInput } from '../interactors/input/sheetInteractor'
+import { Sheet } from '../interactors/output/sheet'
 
 export interface ISheetInteractor {
-  querySheetByDateRange(input: params): Promise<Sheet>
+  querySheetByDateRange(input: getSheetInteractorInput): Promise<Sheet>
 }

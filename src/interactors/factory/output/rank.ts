@@ -1,7 +1,7 @@
-import Player from '../../../../domain/entities/player'
-import { playerRankMap } from '../../../../domain/service/rankService'
-import PlayMode from '../../../../domain/value/mode'
-import { Position, RankOutput } from '../../../output/rank'
+import Player from '../../../domain/entities/player'
+import { playerRankMap } from '../../../domain/service/rankService'
+import PlayMode from '../../../domain/value/mode'
+import { Position, RankOutput } from '../../output/rank'
 
 export function constructRankOutput(
   rankMap: playerRankMap,

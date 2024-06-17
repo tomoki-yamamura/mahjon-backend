@@ -1,5 +1,5 @@
-import PlayerList from '../../../../domain/collection/playerList'
-import { PlayerOutput } from '../../../output/player'
+import PlayerList from '../../../domain/collection/playerList'
+import { PlayerOutput } from '../../output/player'
 import { constructScoreOutput } from './score'
 
 export function constructPlayerOutput(players: PlayerList): PlayerOutput[] {

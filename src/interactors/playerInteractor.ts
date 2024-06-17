@@ -2,7 +2,7 @@ import { inject, injectable } from 'inversify'
 import TYPES from '../config/inversity.types'
 import { IPlayerInteractor } from '../interface/IPlayerInteractor'
 import { IPlayerRepository } from '../domain/interface/repository/IPlayerRepository'
-import { constructPlayerOutput } from './dto/factory/output/player'
+import { constructPlayerOutput } from './factory/output/player'
 import { PlayerOutput } from './output/player'
 
 @injectable()

@@ -1,6 +1,6 @@
-import { getRankInputParams } from '../../../../controllers/input/rankController'
-import { parseStringToDate } from '../../../../utils/date'
-import { getRankInteractorInput } from '../../../input/rankInteractor'
+import { getRankInputParams } from '../../../controllers/input/rankController'
+import { parseStringToDate } from '../../../utils/date'
+import { getRankInteractorInput } from '../../input/rankInteractor'
 
 export function constructGetRankInput(
   req: getRankInputParams,

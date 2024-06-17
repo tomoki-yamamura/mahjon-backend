@@ -1,6 +1,6 @@
-import { LineWebhookRequest } from '../../../../controllers/input/lineController'
-import { dateMap, getEndOfToday } from '../../../../utils/date'
-import { lineInteractorInput } from '../../../input/lineInteractor'
+import { LineWebhookRequest } from '../../../controllers/input/lineController'
+import { dateMap, getEndOfToday } from '../../../utils/date'
+import { lineInteractorInput } from '../../input/lineInteractor'
 
 export function constructLineInput(
   req: LineWebhookRequest,

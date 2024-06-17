@@ -8,7 +8,7 @@ import { RankOutput } from './output/rank'
 import PlayedDateRange from '../domain/value/dateRange'
 import PlayedDate from '../domain/value/date'
 import PlayMode from '../domain/value/mode'
-import { constructRankOutput } from './dto/factory/output/rank'
+import { constructRankOutput } from './factory/output/rank'
 
 @injectable()
 export class RankInteractor implements IRankInteractor {

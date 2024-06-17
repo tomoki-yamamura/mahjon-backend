@@ -3,7 +3,7 @@ import { inject, injectable } from 'inversify'
 import TYPES from '../config/inversity.types'
 import { IRankInteractor } from '../interface/IRankInteractor'
 import { getRankInteractorInput } from '../interactors/input/rankInteractor'
-import { constructGetRankInput } from '../interactors/dto/factory/input/rankInteractor'
+import { constructGetRankInput } from '../interactors/factory/input/rankInteractor'
 import { getRankInputParams } from './input/rankController'
 
 @injectable()
