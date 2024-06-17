@@ -41,7 +41,7 @@ describe('getPlayerRank for 3players', () => {
     fixtureValue.mode3players,
   )
   const playerC = new Player('3', 'playerC', new ScoreList([scores5, scores6]))
-  const playerD = new Player('3', 'playerD', new ScoreList([]))
+  const playerD = new Player('4', 'playerD', new ScoreList([]))
   const dateRange = new PlayedDateRange(
     fixtureValue.fixDate,
     fixtureValue.oneSecLaterDate,
