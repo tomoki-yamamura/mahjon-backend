@@ -27,7 +27,7 @@ class PlayerList {
       return acc;
     }, []);
 
-    return dates
+    return dates.sort((a, b) => a.getDate().getTime() - b.getDate().getTime())
   }
 }
 
