@@ -1,6 +1,5 @@
 import PlayerList from "../../collection/playerList";
 import ScoreList from "../../collection/scoreList";
-import { player } from "../../entities/__tests__/fixture";
 import Player from "../../entities/player";
 import * as fixtureValue from "../../value/__tests__/fixture/index"
 import PlayedDateRange from "../../value/dateRange";

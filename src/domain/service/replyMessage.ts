@@ -1,5 +1,4 @@
 import PlayerList from "../collection/playerList";
-import Player from "../entities/player";
 
 class ReplyMessage {
   private players: PlayerList

@@ -1,8 +1,4 @@
-import Score from "../value/score";
 import PlayedDate from "../value/date";
-import Point from "../value/point";
-import PlayMode from "../value/mode";
-import PlayedDateRange from "../value/dateRange";
 import Player from "../entities/player";
 
 class PlayerList {

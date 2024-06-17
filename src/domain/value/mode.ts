@@ -13,7 +13,7 @@ class PlayMode {
 
   isEqualTo(other: PlayMode): boolean {
     return this.mode === other.getMode();
-  };
+  }
 }
 
 export default PlayMode

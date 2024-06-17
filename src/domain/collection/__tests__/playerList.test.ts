@@ -2,8 +2,7 @@ import Score from "../../value/score";
 import ScoreList from "../scoreList";
 import { point1, point2 } from "../../value/__tests__/fixture/point";
 import { fixDate, oneSecLaterDate, oneSecBeforeDate } from "../../value/__tests__/fixture/date";
-import { mode3players, mode4players } from "../../value/__tests__/fixture/mode";
-import PlayedDateRange from "../../value/dateRange";
+import { mode3players } from "../../value/__tests__/fixture/mode";
 import Player from "../../entities/player";
 import PlayerList from "../playerList";
 

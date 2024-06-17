@@ -30,7 +30,7 @@ describe('SheetInteractor', () => {
       startDate: "2024-01-01",
       endDate: "2024-01-01"
     }
-    const result = await interactor.querySheetByDateRange(params);
+    await interactor.querySheetByDateRange(params);
     const expectedParams = {
       id: "1",
       startDate: new SheetDate(params.startDate),

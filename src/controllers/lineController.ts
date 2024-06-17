@@ -13,7 +13,7 @@ export class LineController {
     this.interactor = interactor;
   }
   async sendScoreToPlayer(
-    req: express.Request<{}, {}, LineWebhookRequest>,
+    req: express.Request<object, object, LineWebhookRequest>,
     res: express.Response,
     next: NextFunction
   ) {

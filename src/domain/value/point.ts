@@ -10,7 +10,7 @@ class Point {
 
   isEqualTo(other: Point): boolean {
     return this.point === other.getPoint();
-  };
+  }
 
   add(other: Point): Point {
     return new Point(this.point + other.getPoint());

@@ -1,7 +1,6 @@
 import { inject, injectable } from "inversify";
 import TYPES from "../../config/inversity.types";
 import { IMessageSender } from "../../domain/interface/line/IMessageSender";
-import Player from "../../domain/entities/player";
 import { messagingApi } from "@line/bot-sdk";
 import ReplyMessage from "../../domain/service/replyMessage";
 import { ShowLoadingAnimationRequest } from "@line/bot-sdk/dist/messaging-api/model/models";

@@ -6,9 +6,7 @@ import Player from "../../domain/entities/player";
 import { reconstructPlayers } from "./factory/player";
 import { IScore } from "./db/model/score";
 import PlayedDate from "../../domain/value/date";
-import PlayMode from "../../domain/value/mode";
 import PlayerList from "../../domain/collection/playerList";
-import PlayedDateRange from "../../domain/value/dateRange";
 
 @injectable()
 export class PlayerRepository implements IPlayerRepository {

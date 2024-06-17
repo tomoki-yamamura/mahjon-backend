@@ -46,10 +46,6 @@ describe('LineInteractor', () => {
     
     await interactor.sendScoreToPlayer(input);
 
-    const vmode = new PlayMode(input.mode);
-    const vstartDate = new PlayedDate(input.startDate);
-    const vendDate = new PlayedDate(input.endDate);
-
     expect(playerRepositoryMock.getAllPlayers).toHaveBeenCalled();
     expect(messageSenderMock.replyMessage).toHaveBeenCalledWith(input.replyToken, dummyPlayers);
   });
