@@ -1,30 +1,32 @@
 const TYPES = {
   // controller
-  SheetController: Symbol.for("SheetController"),
-  HealthController: Symbol.for("HealthController"),
-  LineController: Symbol.for("LineController"),
-  PlayerController: Symbol.for("PlayerController"),
+  SheetController: Symbol.for('SheetController'),
+  HealthController: Symbol.for('HealthController'),
+  LineController: Symbol.for('LineController'),
+  PlayerController: Symbol.for('PlayerController'),
+  RankController: Symbol.for('RankController'),
 
   //interactor
-  SheetInteractor: Symbol.for("SheetInteractor"),
-  PlayerInteractor: Symbol.for("PlayerInteractor"),
-  HanchanInteractor: Symbol.for("HanchanInteractor"),
-  LineInteractor: Symbol.for("LineInteractor"),
+  SheetInteractor: Symbol.for('SheetInteractor'),
+  PlayerInteractor: Symbol.for('PlayerInteractor'),
+  HanchanInteractor: Symbol.for('HanchanInteractor'),
+  LineInteractor: Symbol.for('LineInteractor'),
+  RankInteractor: Symbol.for('RankInteractor'),
 
   // irepository
-  SheetRepository: Symbol.for("SheetRepository"),
-  PlayerRepository: Symbol.for("PlayerRepository"),
+  SheetRepository: Symbol.for('SheetRepository'),
+  PlayerRepository: Symbol.for('PlayerRepository'),
 
   // infra/line
-  LineMessageSender: Symbol.for("LineMessageSender"),
-  LineClient: Symbol.for("LineClient"),
+  LineMessageSender: Symbol.for('LineMessageSender'),
+  LineClient: Symbol.for('LineClient'),
 
   //infra/mongoDB/model
-  ScoreModel: Symbol.for("ScoreModel"),
-  PlayerModel: Symbol.for("PlayerModel"),
+  ScoreModel: Symbol.for('ScoreModel'),
+  PlayerModel: Symbol.for('PlayerModel'),
 
   // infra/GoogleSpreadSheet
-  gsDoc: Symbol.for("gsDoc"),
-};
+  gsDoc: Symbol.for('gsDoc'),
+}
 
-export default TYPES;
+export default TYPES

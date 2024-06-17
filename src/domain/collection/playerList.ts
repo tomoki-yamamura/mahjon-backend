@@ -1,12 +1,8 @@
-import Score from "../value/score";
-import PlayedDate from "../value/date";
-import Point from "../value/point";
-import PlayMode from "../value/mode";
-import PlayedDateRange from "../value/dateRange";
-import Player from "../entities/player";
+import PlayedDate from '../value/date'
+import Player from '../entities/player'
 
 class PlayerList {
-  private players: Player[];
+  private players: Player[]
 
   constructor(players: Player[]) {
     this.players = players
@@ -17,13 +13,21 @@ class PlayerList {
   }
 
   getPlayedDates(): PlayedDate[] {
-    const dates: PlayedDate[] = this.players.reduce((acc: PlayedDate[], player: Player) => {
-      const playerDates = player.scores.getScores().map((score) => score.date);
-      return acc.concat(playerDates);
-    }, []);
-    return [...new Set(dates)].map((a: PlayedDate) => a)
+    const dates: PlayedDate[] = this.players.reduce(
+      (acc: PlayedDate[], player: Player) => {
+        const playerDates = player.scores.getScores().map(score => score.date)
+        playerDates.map(playedDate => {
+          if (!acc.some(dateObj => dateObj.isEqualTo(playedDate))) {
+            acc.push(playedDate)
+          }
+        })
+        return acc
+      },
+      [],
+    )
+
+    return dates.sort((a, b) => a.getDate().getTime() - b.getDate().getTime())
   }
 }
-
 
 export default PlayerList

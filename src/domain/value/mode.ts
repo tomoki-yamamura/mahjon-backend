@@ -1,10 +1,12 @@
 class PlayMode {
-  mode: "3players" | "4players";
+  mode: '3players' | '4players'
   constructor(mode: string) {
-    if (mode !== "3players" && mode !== "4players") {
-      throw new Error(`Invalid mode: ${mode}. Mode must be "3player" or "4player".`);
+    if (mode !== '3players' && mode !== '4players') {
+      throw new Error(
+        `Invalid mode: ${mode}. Mode must be "3player" or "4player".`,
+      )
     }
-    this.mode = mode;
+    this.mode = mode
   }
 
   getMode(): string {
@@ -12,8 +14,8 @@ class PlayMode {
   }
 
   isEqualTo(other: PlayMode): boolean {
-    return this.mode === other.getMode();
-  };
+    return this.mode === other.getMode()
+  }
 }
 
 export default PlayMode
