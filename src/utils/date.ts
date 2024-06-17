@@ -11,7 +11,7 @@ function getEndOfToday(): Date {
 }
 
 function getWeekly(): Date {
-  const monday = moment().startOf('isoWeek').tz('Asia/Tokyo'); // ISO 8601: Monday is the first day of the week
+  const monday = moment().startOf('isoWeek').tz('Asia/Tokyo');
   return monday.toDate();
 }
 

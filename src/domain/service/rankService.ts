@@ -27,7 +27,7 @@ class RankService {
       player.filterScoresByDate(dateRange).filterScoresByMode(mode)
     )
     const playerList = new PlayerList(filteredPlayers)
-    const playedDates = playerList.getPlayedDates()
+    const playedDates = playerList.getPlayedDates()    
     const ranks = playedDates.map((date) => {
       const playersSameDate = filteredPlayers.filter((player) => player.scores.hasScoreDate(date));
       const calculateRank = this.calculateRank(playersSameDate, date)
@@ -42,7 +42,6 @@ class RankService {
     const playerRankMap: playerRankMap = new Map();
     
     playerRankMap.set(player, ranks)
-    
     return playerRankMap
   }
 

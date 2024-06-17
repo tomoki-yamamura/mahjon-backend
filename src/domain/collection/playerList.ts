@@ -19,9 +19,15 @@ class PlayerList {
   getPlayedDates(): PlayedDate[] {
     const dates: PlayedDate[] = this.players.reduce((acc: PlayedDate[], player: Player) => {
       const playerDates = player.scores.getScores().map((score) => score.date);
-      return acc.concat(playerDates);
+      playerDates.map((playedDate) => {
+        if (!acc.some(dateObj => dateObj.isEqualTo(playedDate))) {
+          acc.push(playedDate);
+        }
+      })
+      return acc;
     }, []);
-    return [...new Set(dates)].map((a: PlayedDate) => a)
+
+    return dates
   }
 }
 

@@ -31,11 +31,3 @@ export class RankInteractor implements IRankInteractor {
     return result
   }
 }
-
-
-// export type Rank = {
-//   date: PlayedDate;
-//   position: number;
-// };
-
-// export type playerRankMap = Map<Player, Rank[]>;

@@ -9,18 +9,19 @@ import Score from "../../value/score";
 import RankService, { Rank } from "../rankService";
 
 describe('getPlayerRank for 3players', () => {
-  const scores1 = new Score(fixtureValue.fixDate, new Point(-50), fixtureValue.mode3players)
-  const scores2 = new Score(fixtureValue.oneSecLaterDate, new Point(50), fixtureValue.mode3players)
+  const scores1 = new Score(fixtureValue.fixDate, new Point(-39), fixtureValue.mode3players)
+  const scores2 = new Score(fixtureValue.oneSecLaterDate, new Point(-39), fixtureValue.mode3players)
   const playerA = new Player("1", "playerA", new ScoreList([scores1, scores2]))
-  const scores3 = new Score(fixtureValue.fixDate, new Point(0), fixtureValue.mode3players)
-  const scores4 = new Score(fixtureValue.oneSecLaterDate, new Point(-50), fixtureValue.mode3players)
+  const scores3 = new Score(fixtureValue.fixDate, new Point(-15), fixtureValue.mode3players)
+  const scores4 = new Score(fixtureValue.oneSecLaterDate, new Point(40), fixtureValue.mode3players)
   const playerB = new Player("2", "playerB", new ScoreList([scores3, scores4]))
-  const scores5 = new Score(fixtureValue.fixDate, new Point(50), fixtureValue.mode3players)
-  const scores6 = new Score(fixtureValue.oneSecLaterDate, new Point(0), fixtureValue.mode3players)
+  const scores5 = new Score(fixtureValue.fixDate, new Point(54), fixtureValue.mode3players)
+  const scores6 = new Score(fixtureValue.oneSecLaterDate, new Point(-1), fixtureValue.mode3players)
   const playerC = new Player("3", "playerC", new ScoreList([scores5, scores6]))
+  const playerD = new Player("3", "playerD", new ScoreList([]))
   const dateRange = new PlayedDateRange(fixtureValue.fixDate, fixtureValue.oneSecLaterDate)
 
-  const playerList = new PlayerList([playerA, playerB, playerC])
+  const playerList = new PlayerList([playerA, playerB, playerC, playerD])
 
   const rankService = new RankService(playerList)
 
@@ -32,7 +33,7 @@ describe('getPlayerRank for 3players', () => {
       },
       {
         date: fixtureValue.oneSecLaterDate,
-        position: 1
+        position: 3
       },
     ]
     expect(rankService.getPlayerRank(playerA, dateRange, fixtureValue.mode3players).get(playerA)).toEqual(expected)
@@ -45,7 +46,7 @@ describe('getPlayerRank for 3players', () => {
       },
       {
         date: fixtureValue.oneSecLaterDate,
-        position: 3
+        position: 1
       },
     ]
     expect(rankService.getPlayerRank(playerB, dateRange, fixtureValue.mode3players).get(playerB)).toEqual(expected)
