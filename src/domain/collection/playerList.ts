@@ -1,5 +1,7 @@
 import PlayedDate from '../value/date'
 import Player from '../entities/player'
+import PlayMode from '../value/mode'
+import PlayedDateRange from '../value/dateRange'
 
 class PlayerList {
   private players: Player[]
@@ -27,6 +29,20 @@ class PlayerList {
     )
 
     return dates.sort((a, b) => a.getDate().getTime() - b.getDate().getTime())
+  }
+
+  hasScore(): PlayerList {
+    return new PlayerList(this.players.filter((player) => player.scores.getScores().length !== 0))
+  }
+
+  filterScoresByMode(mode: PlayMode): PlayerList {
+    const filterdPlayers = this.players.map((player) => player.filterScoresByMode(mode))
+    return new PlayerList(filterdPlayers)
+  }
+
+  filterScoresByDate(dateRange: PlayedDateRange): PlayerList {
+    const filterdPlayers = this.players.map((player) => player.filterScoresByDate(dateRange))
+    return new PlayerList(filterdPlayers)
   }
 }
 

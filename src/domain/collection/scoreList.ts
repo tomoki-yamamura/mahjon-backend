@@ -40,7 +40,9 @@ class ScoreList {
   }
 
   filterScoresByMode(mode: PlayMode): ScoreList {
-    const newScores = this.scores.filter(score => score.mode.isEqualTo(mode))
+    const newScores = this.scores.filter(score => {
+      return score.mode.isEqualTo(mode)
+    })
     return new ScoreList(newScores)
   }
 }

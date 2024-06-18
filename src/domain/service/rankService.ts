@@ -23,15 +23,10 @@ class RankService {
     dateRange: PlayedDateRange,
     mode: PlayMode,
   ): playerRankMap {
-    const filteredPlayers = this.players
-      .getPlayers()
-      .map(player =>
-        player.filterScoresByDate(dateRange).filterScoresByMode(mode),
-      )
-    const playerList = new PlayerList(filteredPlayers)
-    const playedDates = playerList.getPlayedDates()
+    const filteredPlayers = this.players.filterScoresByDate(dateRange).filterScoresByMode(mode).hasScore()
+    const playedDates = filteredPlayers.getPlayedDates()
     const ranks = playedDates.map(date => {
-      const playersSameDate = filteredPlayers.filter(player =>
+      const playersSameDate = filteredPlayers.getPlayers().filter(player =>
         player.scores.hasScoreDate(date),
       )
       const calculateRank = this.calculateRank(playersSameDate, date)

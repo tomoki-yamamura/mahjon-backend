@@ -25,8 +25,9 @@ export class RankInteractor implements IRankInteractor {
     const vmode = new PlayMode(input.mode)
 
     const players = await this.repository.getAllPlayers()
-    const rankService = new RankService(players)
-    const result = players.getPlayers().map(player => {
+    const filteredPlayers = players.filterScoresByDate(vdateRange).filterScoresByMode(vmode).hasScore()
+    const rankService = new RankService(filteredPlayers)
+    const result = filteredPlayers.getPlayers().map(player => {
       const playerRankMap = rankService.getPlayerRank(player, vdateRange, vmode)
       return constructRankOutput(playerRankMap, player, vmode)
     })
